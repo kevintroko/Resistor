@@ -5,7 +5,7 @@ package proyecto;
  * @author Mark Octavio Rivera Acosta A01234567
  * 
  * Started in April 6th, 2016
- * Last modified in April 19th, 2016
+ * Last modified in April 26th, 2016
  */
 
 import java.awt.Color;
@@ -49,7 +49,7 @@ public class PanelControles extends JPanel implements ActionListener{
 	contadorT;
 
 	//Constructor
-	public PanelControles(PanelResultados pr) {
+	public PanelControles() {
 		super();
 		((FlowLayout)this.getLayout()).setAlignment(FlowLayout.CENTER);
 		this.setPreferredSize(new Dimension(200,720));
@@ -69,7 +69,6 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.voltaje4=new Voltaje();
 		this.voltaje5=new Voltaje();
 		this.voltaje6=new Voltaje();
-		this.pr=pr;
 
 		//Add components into the array
 		arrRes[0]=this.panelRes;
@@ -118,7 +117,7 @@ public class PanelControles extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.bResultado){
-			pr.setBackground(Color.black);
+			pr.consigueBoton();
 			this.agregaPanel();
 		}
 	}
@@ -147,5 +146,13 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	public int getContadorTotal(){
 		return this.contadorT;
+	}
+
+	public Resistencia[] getArray() {
+		return this.arrRes;
+	}
+	
+	public Voltaje[] getArrayV(){
+		return this.arrVol;
 	}
 }

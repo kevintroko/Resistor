@@ -70,4 +70,8 @@ public class Resistencia extends JPanel implements ActionListener {
 			this.tTexto.setText("0");
 		}
 	}
+	
+	public int getValor(){
+		return this.valor;
+	}
 }
