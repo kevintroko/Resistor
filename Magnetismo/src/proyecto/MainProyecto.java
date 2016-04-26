@@ -7,7 +7,7 @@ import javax.swing.JFrame;
  * PROJECT METODOS NUMERICOS
  * Saved as MainProjecto.java
  * @author Kevin Oswaldo Cabrera Navarro A01227157
- * @author Mark Octavio Rivera Acosta A01234567
+ * @author Mark Octavio Rivera Acosta A01630250
  * 
  * Started in April 6th, 2016
  * Last modified in April 26th, 2016
