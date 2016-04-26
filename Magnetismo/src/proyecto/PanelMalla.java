@@ -10,10 +10,10 @@ package proyecto;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -32,10 +32,10 @@ public class PanelMalla extends JPanel implements ActionListener{
 	private PanelControles pc;
 	private String componente;
 
-	Icon iC;
-	Icon iCo;
-	Icon iV;
-	Icon iR;
+	ImageIcon iC;
+	ImageIcon iCo;
+	ImageIcon iV;
+	ImageIcon iR;
 
 	//Main Constructor
 	public PanelMalla(PanelControles pc)  {
@@ -46,10 +46,31 @@ public class PanelMalla extends JPanel implements ActionListener{
 
 		//Instantiation
 		this.pc=pc;
-		this.iC=new ImageIcon("capacitor.png");
-		this.iCo=new ImageIcon("conductor.png");
-		this.iV=new ImageIcon("voltaje.png");
-		this.iR=new ImageIcon("resistencia.png");
+		this.iC=new ImageIcon(getClass().getResource("capacitor.png"));
+		this.iCo=new ImageIcon(getClass().getResource("conductor.png"));
+		this.iV=new ImageIcon(getClass().getResource("voltaje.png"));
+		this.iR=new ImageIcon(getClass().getResource("resistencia.png"));
+		
+		 //Change size: Resistor Image  
+		 Image img = iR.getImage() ;  
+		 Image newimg = img.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		 iR = new ImageIcon( newimg );
+		 
+		 //Change size: Capacitor Image
+		 Image img2 = iC.getImage() ;  
+		 Image newimg2 = img2.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		 iC = new ImageIcon( newimg2 );
+		 
+		 //Change size: conductor Image  
+		 Image img3 = iCo.getImage() ;  
+		 Image newimg3 = img3.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		 iCo = new ImageIcon( newimg3 );
+		   
+		 //Change size: voltage Image
+		 Image img4 = iV.getImage() ;  
+		 Image newimg4 = img4.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		 iV = new ImageIcon( newimg4 );
+		 
 		this.bComponente1=new JButton("Componente1");
 		this.bComponente2=new JButton("Componente2");
 		this.bComponente3=new JButton("Componente3");
