@@ -57,7 +57,6 @@ public class PanelMalla extends JPanel implements ActionListener{
 		this.bComponente5=new JButton("Componente5");
 		this.bComponente6=new JButton("Componente6");
 
-
 		//Adding components
 		this.add(bComponente1);
 		this.add(bComponente2);
@@ -145,16 +144,32 @@ public class PanelMalla extends JPanel implements ActionListener{
 			JOptionPane.showMessageDialog(this, "Limit reached");
 		}
 		
+		//Draws Button
 		if(e.getSource() == this.bComponente1){
-			if(componente=="resistencia"){
-				bComponente1.setIcon(iR);
-			}else if(componente=="capacitor"){
-				bComponente1.setIcon(iC);
-			}else if(componente=="conductor"){
-				bComponente1.setIcon(iCo);
-			}else if(componente=="voltaje"){
-				bComponente1.setIcon(iV);
-			}
-		} 
+			this.checar(this.bComponente1);
+		}else if(e.getSource()==this.bComponente2){
+			this.checar(this.bComponente2);
+		}else if(e.getSource()==this.bComponente3){
+			this.checar(this.bComponente3);
+		}else if(e.getSource()==this.bComponente4){
+			this.checar(this.bComponente4);
+		}else if(e.getSource()==this.bComponente5){
+			this.checar(this.bComponente5);
+		}else if(e.getSource()==this.bComponente6){
+			this.checar(this.bComponente6);
+		}
+	}
+	
+	//Checks which component has to draw
+	public void checar(JButton boton){
+		if(componente=="resistencia"){
+			boton.setIcon(iR);
+		}else if(componente=="capacitor"){
+			boton.setIcon(iC);
+		}else if(componente=="conductor"){
+			boton.setIcon(iCo);
+		}else if(componente=="voltaje"){
+			boton.setIcon(iV);
+		}
 	}
 }
