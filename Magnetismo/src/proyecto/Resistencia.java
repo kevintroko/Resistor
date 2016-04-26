@@ -62,11 +62,11 @@ public class Resistencia extends JPanel implements ActionListener {
 			this.valor=0;
 		}
 		//prints value (Only for testing)
-		System.out.println("El valor es: "+this.valor);
+		//System.out.println("El valor es: "+this.valor);
 		
 		}else if(e.getSource()==this.bReset){
 			this.valor=0;
-			System.out.println("El valor es: "+this.valor);
+			//System.out.println("El valor es: "+this.valor);
 			this.tTexto.setText("0");
 		}
 	}

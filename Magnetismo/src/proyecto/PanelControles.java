@@ -15,16 +15,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PanelControles extends JPanel implements ActionListener{
 	//Buttons
 	private JButton bResultado;
+	
+	//JLABEL
+	private JLabel lSumaVoltajes,
+				   lSumaResistencias;
 
 	//Resistances array and voltages
 	private Resistencia[] arrRes = new Resistencia[6];
 	private Voltaje[] arrVol= new Voltaje[6];
+	
+	private int sumaVoltaje,
+				sumaResistencia;
 	
 	//Possible resistances
 	private Resistencia panelRes, 
@@ -41,12 +49,10 @@ public class PanelControles extends JPanel implements ActionListener{
 					voltaje5,
 					voltaje6;
 
-	//Panel where all the sums will go
-	private PanelResultados pr;
 	//Counter of possible resistances
 	private int contador,
-	contadorV,
-	contadorT;
+				contadorV,
+				contadorT;
 
 	//Constructor
 	public PanelControles() {
@@ -69,6 +75,8 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.voltaje4=new Voltaje();
 		this.voltaje5=new Voltaje();
 		this.voltaje6=new Voltaje();
+		this.lSumaResistencias=new JLabel();
+		this.lSumaVoltajes=new JLabel();
 
 		//Add components into the array
 		arrRes[0]=this.panelRes;
@@ -86,7 +94,9 @@ public class PanelControles extends JPanel implements ActionListener{
 
 		//Adds components into the panel
 		this.add(bResultado);
-
+		this.add(lSumaResistencias);
+		this.add(lSumaVoltajes);
+		
 		//Adds Listeners
 		this.bResultado.addActionListener(this);
 	}
@@ -101,12 +111,12 @@ public class PanelControles extends JPanel implements ActionListener{
 		if(this.contadorT<7){
 			for(int i=0;i<this.contador;i++){
 				this.add(this.arrRes[i]);
-				System.out.println("resitencia[i]: "+i);
+				//System.out.println("resitencia[i]: "+i);
 			}
 			
 			for(int j=0;j<this.contadorV;j++){
 				this.add(this.arrVol[j]);
-				System.out.println("voltaje[j]: "+j);
+				//System.out.println("voltaje[j]: "+j);
 			}
 			this.add(bResultado);
 			this.revalidate();
@@ -117,8 +127,19 @@ public class PanelControles extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.bResultado){
-			pr.consigueBoton();
 			this.agregaPanel();
+			//Sums values of the res array
+			this.sumaResistencia=0;
+			this.sumaVoltaje=0;
+			
+			for(int i=0;i<arrRes.length;i++){
+				this.sumaResistencia+=arrRes[i].getValor();
+			}
+			for(int j=0;j<arrVol.length;j++){
+				this.sumaVoltaje+=arrVol[j].getValor();
+			}
+			
+			this.lSumaResistencias.setText("Suma: "+this.sumaResistencia);
 		}
 	}
 

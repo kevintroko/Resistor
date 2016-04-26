@@ -138,7 +138,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 
 	public void cambiarComponente(String componente){
 		this.componente=componente;
-		System.out.println("malla: "+this.componente);
+		//System.out.println("malla: "+this.componente);
 	}
 
 	@Override

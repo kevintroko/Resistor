@@ -70,4 +70,9 @@ public class Voltaje extends JPanel implements ActionListener {
 			this.tTexto.setText("0");
 		}
 	}
+
+	public int getValor() {
+		// TODO Auto-generated method stub
+		return this.valor;
+	}
 }

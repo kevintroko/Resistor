@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 public class PanelResultados extends JPanel {
 	PanelControles pc;
 	
+	
 	public PanelResultados(PanelControles pc) {
 		super();
 		this.pc=pc;
