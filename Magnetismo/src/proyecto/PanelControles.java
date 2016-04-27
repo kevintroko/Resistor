@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -233,9 +232,10 @@ public class PanelControles extends JPanel implements ActionListener{
 	public void formula() throws IOException{
 		System.out.println(this.sumaResistencia1+"i1+"+resistenciaV+"i2="+this.sumaVoltaje1);
 		System.out.println(this.sumaResistencia2+"i1+"+resistenciaV+"i2="+this.sumaVoltaje2);
-		PrintWriter pw=new PrintWriter(new FileWriter("formula.txt"));
-		pw.println(2);
-		pw.println(-1);
+		PrintWriter pw=new PrintWriter(new FileWriter("in1."));
+		pw.print(2);
+		pw.print(" ");
+		pw.println(3);
 		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
 		pw.println(this.sumaResistencia2+" "+resistenciaV+" "+this.sumaVoltaje2);
 		pw.close();	
