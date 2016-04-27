@@ -45,6 +45,7 @@ public class PanelCircuitos extends JPanel implements ActionListener{
 		this.conductorIMG =new ImageIcon(getClass().getResource("conductor.png"));
 		this.voltajeIMG = new ImageIcon(getClass().getResource("voltaje.png"));
 
+<<<<<<< HEAD
 		Image img = resistenciaIMG.getImage() ;  
 		Image newimg = img.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
 		resistenciaIMG = new ImageIcon( newimg );
@@ -61,6 +62,24 @@ public class PanelCircuitos extends JPanel implements ActionListener{
 		Image newimg4 = img4.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
 		voltajeIMG = new ImageIcon( newimg4 );
 
+=======
+		 Image img = resistenciaIMG.getImage() ;  
+		 Image newimg = img.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
+		 resistenciaIMG = new ImageIcon( newimg );
+		   
+		 Image img2 = capacitorIMG.getImage() ;  
+		 Image newimg2 = img2.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
+		 capacitorIMG = new ImageIcon( newimg2 );
+		   
+		 Image img3 = conductorIMG.getImage() ;  
+		 Image newimg3 = img3.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
+		 conductorIMG = new ImageIcon( newimg3 );
+		   
+		 Image img4 = voltajeIMG.getImage() ;  
+		 Image newimg4 = img4.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
+		 voltajeIMG = new ImageIcon( newimg4 );
+		
+>>>>>>> origin/master
 		this.resistencia = new JButton(resistenciaIMG);
 		this.capacitor = new JButton(capacitorIMG);
 		this.conductor = new JButton(conductorIMG);

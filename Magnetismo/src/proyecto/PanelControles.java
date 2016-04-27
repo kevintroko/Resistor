@@ -13,14 +13,18 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class PanelControles extends JPanel implements ActionListener{
 
+<<<<<<< HEAD
 	private PanelResultados pr;
 
 	//Buttons
@@ -30,15 +34,32 @@ public class PanelControles extends JPanel implements ActionListener{
 	private JLabel lSumaVoltajes,
 	lSumaResistencias;
 
+=======
+	PanelResultados pr;
+	//Buttons
+	private JButton bResultado;
+
+>>>>>>> origin/master
 	//Resistances array and voltages
 	private Resistencia[] arrRes1=new Resistencia[3];
 	private Resistencia[] arrRes2=new Resistencia[3];
 	private Voltaje[] arrVol1=new Voltaje[3];
 	private Voltaje[] arrVol2=new Voltaje[3];
+<<<<<<< HEAD
 
 
 	private int sumaVoltaje,
 	sumaResistencia;
+=======
+	
+	private JTextField tresInicial;
+	private JButton bPonerRes;
+	private int sumaVoltaje1,
+	sumaResistencia1,
+	sumaVoltaje2,
+	sumaResistencia2,
+	resistenciaV;
+>>>>>>> origin/master
 
 	//Possible resistances
 	private Resistencia panelRes, 
@@ -54,11 +75,16 @@ public class PanelControles extends JPanel implements ActionListener{
 	voltaje4,
 	voltaje5,
 	voltaje6;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 
 	//Counter of possible resistances
-	private int contador1,contador2,
-	contadorV1, contadorV2,
+	private int contador1,
+	contador2,
+	contadorV1,
+	contadorV2,
 	contadorT;
 
 	//Constructor
@@ -82,10 +108,10 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.voltaje4=new Voltaje();
 		this.voltaje5=new Voltaje();
 		this.voltaje6=new Voltaje();
-		this.lSumaResistencias=new JLabel();
-		this.lSumaVoltajes=new JLabel();
 		this.pr=pr;
-
+		this.tresInicial=new JTextField(6);
+		this.bPonerRes=new JButton("Ok");
+		
 		//Add components into the array
 		arrRes1[0]=this.panelRes;
 		arrRes1[1]=this.panelRes2;
@@ -102,12 +128,21 @@ public class PanelControles extends JPanel implements ActionListener{
 		arrVol2[2]=this.voltaje6;
 
 		//Adds components into the panel
+		this.add(tresInicial);
+		this.add(bPonerRes);
 		this.add(bResultado);
-		this.add(lSumaResistencias);
-		this.add(lSumaVoltajes);
 
 		//Adds Listeners
 		this.bResultado.addActionListener(this);
+		this.bPonerRes.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==bPonerRes){
+					resistenciaV=Integer.parseInt(tresInicial.getText());
+				}		
+			}
+		});
 	}
 
 	//Adds the resistances and voltages into the array
@@ -144,33 +179,50 @@ public class PanelControles extends JPanel implements ActionListener{
 			this.revalidate();
 		}
 	}
-
+	
 	//Actions of the buttons
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.bResultado){
 			this.agregaPanel();
+
 			//Sums values of the res array
-			this.sumaResistencia=0;
-			this.sumaVoltaje=0;
+			this.sumaResistencia1=0;
+			this.sumaVoltaje1=0;
+			this.sumaResistencia2=0;
+			this.sumaVoltaje2=0;
 
 			for(int i=0;i<arrRes1.length;i++){					
+<<<<<<< HEAD
 				this.sumaResistencia+=arrRes1[i].getValor();
+=======
+				this.sumaResistencia1+=arrRes1[i].getValor();
+>>>>>>> origin/master
 			}
 			for(int j=0;j<arrVol1.length;j++){
-				this.sumaVoltaje+=arrVol1[j].getValor();
+				this.sumaVoltaje1+=arrVol1[j].getValor();
 			}
 
 			for(int i=0;i<arrRes2.length;i++){					
-				this.sumaResistencia+=arrRes2[i].getValor();
+				this.sumaResistencia2+=arrRes2[i].getValor();
 			}
 			for(int j=0;j<arrVol2.length;j++){
-				this.sumaVoltaje+=arrVol2[j].getValor();
+				this.sumaVoltaje2+=arrVol2[j].getValor();
 			}
 
+<<<<<<< HEAD
 			this.lSumaResistencias.setText("Suma: "+this.sumaResistencia);
 			this.lSumaVoltajes.setText("Voltaje; "+this.sumaVoltaje);
 			this.pr.paintComponent(getGraphics());
+=======
+			//this.pr.dibujaCircuito(getGraphics());
+			try {
+				this.formula();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+>>>>>>> origin/master
 		}
 	}
 
@@ -192,15 +244,33 @@ public class PanelControles extends JPanel implements ActionListener{
 	}
 
 	//Getters
-	public int getContadorR1(){return this.contador1;}
-	public int getContadorR2(){return this.contador2;}
+	public int getContadorR1(){
+		return this.contador1;
+	}
+	public int getContadorR2(){
+		return this.contador2;
+	}
 
-	public int getContadorV1() {return this.contadorV1;}
-	public int getContadorV2() {return this.contadorV2;}
+	public int getContadorV1(){
+		return this.contadorV1;
+	}
+	public int getContadorV2() {
+		return this.contadorV2;
+	}
 
-	public int getContadorTotal(){return this.contadorT;}
+	public int getContadorTotal(){
+		return this.contadorT;
+	}
 
-	public Resistencia[] getArray() {return this.arrRes1;}
-
-	public Voltaje[] getArrayV(){return this.arrVol1;}
+	public void formula() throws IOException{
+		System.out.println(this.sumaResistencia1+"i1+"+resistenciaV+"i2="+this.sumaVoltaje1);
+		System.out.println(this.sumaResistencia2+"i1+"+resistenciaV+"i2="+this.sumaVoltaje2);
+		PrintWriter pw=new PrintWriter(new FileWriter("in1."));
+		pw.print(2);
+		pw.print(" ");
+		pw.println(3);
+		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
+		pw.println(this.sumaResistencia2+" "+resistenciaV+" "+this.sumaVoltaje2);
+		pw.close();	
+	}
 }
