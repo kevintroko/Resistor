@@ -1,5 +1,4 @@
 package proyecto;
-
 import java.io.*;
 import java.util.StringTokenizer;
 
@@ -8,9 +7,9 @@ class GaussJordan{
    // swap()
    // swap row i with row k
    // pre: A[i][q]==A[k][q]==0 for 1<=q<j
-   static void swap(double[][] A, int i, int k, int j){
+   static void swap(int[][] A, int i, int k, int j){
       int m = A[0].length - 1;
-      double temp;
+      int temp;
       for(int q=j; q<=m; q++){
          temp = A[i][q];
          A[i][q] = A[k][q];
@@ -22,7 +21,7 @@ class GaussJordan{
    // divide row i by A[i][j]
    // pre: A[i][j]!=0, A[i][q]==0 for 1<=q<j
    // post: A[i][j]==1;
-   static void divide(double[][] A, int i, int j){
+   static void divide(int[][] A, int i, int j){
       int m = A[0].length - 1;
       for(int q=j+1; q<=m; q++) A[i][q] /= A[i][j];
       A[i][j] = 1;
@@ -32,7 +31,7 @@ class GaussJordan{
    // subtract an appropriate multiple of row i from every other row
    // pre: A[i][j]==1, A[i][q]==0 for 1<=q<j
    // post: A[p][j]==0 for p!=i
-   static void eliminate(double[][] A, int i, int j){
+   static void eliminate(int[][] A, int i, int j){
       int n = A.length - 1;
       int m = A[0].length - 1;
       for(int p=1; p<=n; p++){
@@ -47,7 +46,7 @@ class GaussJordan{
 
    // printMatrix()
    // print the present state of Matrix A to file out
-   static void printMatrix(PrintWriter out, double[][] A){
+   static void printMatrix(PrintWriter out, int[][] A){
      int n = A.length - 1;
      int m = A[0].length - 1;
       for(int i=1; i<=n; i++){
@@ -57,38 +56,83 @@ class GaussJordan{
       out.println();
       out.println();
    }
+   //read the matrix
+   //get the value for the electrical currents
+   static void leeMatrix() throws IOException{
+	   BufferedReader br = new BufferedReader(new FileReader("outfile"));
+	   String valor_i1, valor_i2;
+	   int i1, i2;
+	   i1 = i2 = 0;
+	   valor_i1 = valor_i2 = "";
+	   
+	   try {
+		   String sCurrentLine = br.readLine();
+
+		    for (int i = 0; i < 20; i++) {
+		    	sCurrentLine = br.readLine();
+		    	if (i == 15) {
+		    		valor_i1 = sCurrentLine;
+				}if(i == 16){
+					valor_i2 = sCurrentLine;
+				}
+			}
+		    
+		    valor_i1 = valor_i1.substring(valor_i1.length() - 4);
+		    StringTokenizer string = new StringTokenizer(valor_i1);
+		    while(string.hasMoreTokens()){
+		    	
+		    	valor_i1 = string.nextToken(" ");
+		    }
+		    valor_i2 = valor_i2.substring(valor_i2.length() - 4);
+		    StringTokenizer string2 = new StringTokenizer(valor_i2);
+		    while(string2.hasMoreTokens()){
+		    	
+		    	valor_i2 = string2.nextToken(" ");
+		    }
+		   i1 = Integer.parseInt(valor_i1);
+		   i2 = Integer.parseInt(valor_i2);
+		    
+		} catch (IOException e) {
+		    e.printStackTrace();
+		} finally {
+		    try {
+				if (br != null)br.close();
+		    } catch (IOException ex) {
+		        ex.printStackTrace();
+		    }
+		}
+	   System.out.println(i1);
+	   System.out.println(i2);
+   }
 
    // main()
    // read input file, initialize matrix, perform Gauss-Jordan Elimination,
    // and write resulting matrices to output file
-   public static void main(String[] args) throws IOException {
+	public void matrices(FileReader fileReader, FileWriter fileWriter) throws IOException{
       int n, m, i, j, k;
       String line;
       StringTokenizer st;
 
       // check command line arguments, open input and output files
-      if( args.length!=2 ){
-         System.out.println("Usage: GaussJordan infile outfile");
-         System.exit(1);
-      }
-      BufferedReader in = new BufferedReader(new FileReader(args[0]));
-      PrintWriter out = new PrintWriter(new FileWriter(args[1]));
+      BufferedReader in = new BufferedReader(fileReader);
+      PrintWriter out = new PrintWriter(fileWriter);
 
+      
       // read first line of input file
       line = in.readLine();
       st = new StringTokenizer(line);
-      n = Integer.parseInt(st.nextToken());
-      m = Integer.parseInt(st.nextToken());
+      n = 2;
+      m = 3;
 
       // declare A to be of size (n+1)x(m+1) and do not use index 0
-      double[][] A = new double[n+1][m+1];
+      int[][] A = new int[n+1][m+1];
 
       // read next n lines of input file and initialize array A
       for(i=1; i<=n; i++){
          line = in.readLine();
          st = new StringTokenizer(line);
          for(j=1; j<=m; j++){
-            A[i][j] = Double.parseDouble(st.nextToken());
+            A[i][j] = Integer.parseInt(st.nextToken());
          }
       }
 
@@ -131,10 +175,14 @@ class GaussJordan{
          j++;
       }
 
+      
       // print rank to output file
       out.println("rank = " + (i-1));
-
+      
+      
       // close output file
       out.close();
+      leeMatrix();
+
    }
 }

@@ -1,6 +1,10 @@
 package proyecto;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.JFrame;
 
 /**
@@ -37,6 +41,14 @@ public class MainProyecto extends JFrame{
 		this.setLocation(50, 0);
 		this.pack();
 		this.setVisible(true);
+		
+		GaussJordan ecuación = new GaussJordan();
+
+		try {
+			ecuación.matrices(new FileReader("in1."), new FileWriter("outfile"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args){
