@@ -106,6 +106,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		dibujaMalla(g);
+		drawResistencia(g,160,260);
 	}
 
 	//Draws the initial circuit
@@ -133,7 +134,19 @@ public class PanelMalla extends JPanel implements ActionListener{
 		g.drawRect(20, 140, 100, 80);
 		g.drawLine(60, 60, 60, 140);
 
-		g.drawLine(60, 260, 380, 260);
+		g.drawLine(60, 260, 160, 260);
+		g.drawLine(280, 260, 380, 260);
+	}
+	
+	public void drawResistencia(Graphics g,int x, int y){
+		g.drawLine(x, y, x+10, y-20);
+		g.drawLine(x+10,y-20,x+30,y+20);
+		g.drawLine(x+30,y+20,x+50,y-20);
+		g.drawLine(x+50,y-20,x+70,y+20);
+		g.drawLine(x+70,y+20,x+90,y-20);
+		g.drawLine(x+90,y-20,x+110,y+20);
+		g.drawLine(x+110,y+20,x+120,y);
+		
 	}
 
 	public void cambiarComponente(String componente){

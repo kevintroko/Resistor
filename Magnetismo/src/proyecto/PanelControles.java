@@ -19,6 +19,7 @@ import java.io.PrintWriter;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class PanelControles extends JPanel implements ActionListener{
@@ -32,8 +33,9 @@ public class PanelControles extends JPanel implements ActionListener{
 	private Resistencia[] arrRes2=new Resistencia[3];
 	private Voltaje[] arrVol1=new Voltaje[3];
 	private Voltaje[] arrVol2=new Voltaje[3];
-
-
+	
+	private JTextField tresInicial;
+	private JButton bPonerRes;
 	private int sumaVoltaje1,
 	sumaResistencia1,
 	sumaVoltaje2,
@@ -53,7 +55,6 @@ public class PanelControles extends JPanel implements ActionListener{
 	voltaje4,
 	voltaje5,
 	voltaje6;
-
 
 	//Counter of possible resistances
 	private int contador1,contador2,
@@ -82,7 +83,9 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.voltaje5=new Voltaje();
 		this.voltaje6=new Voltaje();
 		this.pr=pr;
-
+		this.tresInicial=new JTextField(6);
+		this.bPonerRes=new JButton("Ok");
+		
 		//Add components into the array
 		arrRes1[0]=this.panelRes;
 		arrRes1[1]=this.panelRes2;
@@ -99,6 +102,8 @@ public class PanelControles extends JPanel implements ActionListener{
 		arrVol2[2]=this.voltaje6;
 
 		//Adds components into the panel
+		this.add(tresInicial);
+		this.add(bPonerRes);
 		this.add(bResultado);
 
 		//Adds Listeners
@@ -224,17 +229,3 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.close();	
 	}
 }
-
-
-/*Escritor
-	public static void escritor(String ruta){
-		try(PrintWriter pw = new PrintWriter(new FileWriter(ruta))){
-			pw.println("hola");
-		}catch(IOException|NullPointerException e){
-			System.out.println(e);
-		}
-	}
-
-}
-
- */
