@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -39,7 +40,8 @@ public class PanelControles extends JPanel implements ActionListener{
 	private int sumaVoltaje1,
 	sumaResistencia1,
 	sumaVoltaje2,
-	sumaResistencia2;
+	sumaResistencia2,
+	resistenciaV;
 
 	//Possible resistances
 	private Resistencia panelRes, 
@@ -57,8 +59,10 @@ public class PanelControles extends JPanel implements ActionListener{
 	voltaje6;
 
 	//Counter of possible resistances
-	private int contador1,contador2,
-	contadorV1, contadorV2,
+	private int contador1,
+	contador2,
+	contadorV1,
+	contadorV2,
 	contadorT;
 
 	//Constructor
@@ -108,6 +112,15 @@ public class PanelControles extends JPanel implements ActionListener{
 
 		//Adds Listeners
 		this.bResultado.addActionListener(this);
+		this.bPonerRes.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==bPonerRes){
+					resistenciaV=Integer.parseInt(tresInicial.getText());
+				}		
+			}
+		});
 	}
 
 	//Adds the resistances and voltages into the array
@@ -144,7 +157,7 @@ public class PanelControles extends JPanel implements ActionListener{
 			this.revalidate();
 		}
 	}
-
+	
 	//Actions of the buttons
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -218,7 +231,6 @@ public class PanelControles extends JPanel implements ActionListener{
 	}
 
 	public void formula() throws IOException{
-		int resistenciaV=10;
 		System.out.println(this.sumaResistencia1+"i1+"+resistenciaV+"i2="+this.sumaVoltaje1);
 		System.out.println(this.sumaResistencia2+"i1+"+resistenciaV+"i2="+this.sumaVoltaje2);
 		PrintWriter pw=new PrintWriter(new FileWriter("formula.txt"));
