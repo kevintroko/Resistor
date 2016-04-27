@@ -3,6 +3,8 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 class GaussJordan{
+	
+	private int i1, i2;
 
    // swap()
    // swap row i with row k
@@ -58,11 +60,10 @@ class GaussJordan{
    }
    //read the matrix
    //get the value for the electrical currents
-   static void leeMatrix() throws IOException{
+   public void leeMatrix() throws IOException{
 	   BufferedReader br = new BufferedReader(new FileReader("outfile"));
 	   String valor_i1, valor_i2;
-	   int i1, i2;
-	   i1 = i2 = 0;
+	   this.i1 = this.i2 = 0;
 	   valor_i1 = valor_i2 = "";
 	   
 	   try {
@@ -76,22 +77,7 @@ class GaussJordan{
 					valor_i2 = sCurrentLine;
 				}
 			}
-		    
-		    valor_i1 = valor_i1.substring(valor_i1.length() - 4);
-		    StringTokenizer string = new StringTokenizer(valor_i1);
-		    while(string.hasMoreTokens()){
-		    	
-		    	valor_i1 = string.nextToken(" ");
-		    }
-		    valor_i2 = valor_i2.substring(valor_i2.length() - 4);
-		    StringTokenizer string2 = new StringTokenizer(valor_i2);
-		    while(string2.hasMoreTokens()){
-		    	
-		    	valor_i2 = string2.nextToken(" ");
-		    }
-		   i1 = Integer.parseInt(valor_i1);
-		   i2 = Integer.parseInt(valor_i2);
-		    
+
 		} catch (IOException e) {
 		    e.printStackTrace();
 		} finally {
@@ -101,8 +87,22 @@ class GaussJordan{
 		        ex.printStackTrace();
 		    }
 		}
-	   System.out.println(i1);
-	   System.out.println(i2);
+	    
+	    valor_i1 = valor_i1.substring(valor_i1.length() - 4);
+	    StringTokenizer string = new StringTokenizer(valor_i1);
+	    while(string.hasMoreTokens()){
+	    	
+	    	valor_i1 = string.nextToken(" ");
+	    }
+	    valor_i2 = valor_i2.substring(valor_i2.length() - 4);
+	    StringTokenizer string2 = new StringTokenizer(valor_i2);
+	    while(string2.hasMoreTokens()){
+	    	
+	    	valor_i2 = string2.nextToken(" ");
+	    }
+	   i1 = Integer.parseInt(valor_i1);
+	   i2 = Integer.parseInt(valor_i2);
+	    
    }
 
    // main()
@@ -185,4 +185,11 @@ class GaussJordan{
       leeMatrix();
 
    }
+	
+	public int geti1(){
+		return this.i1;
+	}
+	public int geti2(){
+		return this.i2;
+	}
 }

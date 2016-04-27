@@ -11,20 +11,37 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PanelResultados extends JPanel {
+<<<<<<< HEAD
 	public PanelResultados() {
 		super();
+=======
+	
+	
+	public PanelResultados() {
+		super();
+
+>>>>>>> origin/master
 		((FlowLayout)this.getLayout()).setAlignment(FlowLayout.LEFT);
 		this.setPreferredSize(new Dimension(440,680));
 		this.setBackground(new Color(251,250,250));
-	}
-	
-	public void paintComponent(Graphics g){
-		super.paintComponent(g);
+		
+		GaussJordan ecuación = new GaussJordan();
+		try {
+			ecuación.matrices(new FileReader("in1."), new FileWriter("outfile"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(ecuación.geti1());
+		System.out.println(ecuación.geti2());
 	}
 	
 	public void dibujaCircuito(Graphics g){
