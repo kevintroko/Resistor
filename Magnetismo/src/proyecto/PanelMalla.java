@@ -30,7 +30,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 	bComponente6;
 
 	private PanelControles pc;
-	private String componente, comp1, comp2, comp3, comp4, comp5, comp6;
+	private String componente;
 
 	ImageIcon iC;
 	ImageIcon iCo;

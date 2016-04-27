@@ -24,33 +24,17 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class PanelControles extends JPanel implements ActionListener{
 
-<<<<<<< HEAD
+	//Buttons
+	private JButton bResultado1;
+
 	private PanelResultados pr;
-
-	//Buttons
-	private JButton bResultado;
-
-	//JLABEL
-	private JLabel lSumaVoltajes,
-	lSumaResistencias;
-
-=======
-	PanelResultados pr;
-	//Buttons
-	private JButton bResultado;
-
->>>>>>> origin/master
+	
 	//Resistances array and voltages
 	private Resistencia[] arrRes1=new Resistencia[3];
 	private Resistencia[] arrRes2=new Resistencia[3];
 	private Voltaje[] arrVol1=new Voltaje[3];
 	private Voltaje[] arrVol2=new Voltaje[3];
-<<<<<<< HEAD
-
-
-	private int sumaVoltaje,
-	sumaResistencia;
-=======
+	
 	
 	private JTextField tresInicial;
 	private JButton bPonerRes;
@@ -59,7 +43,7 @@ public class PanelControles extends JPanel implements ActionListener{
 	sumaVoltaje2,
 	sumaResistencia2,
 	resistenciaV;
->>>>>>> origin/master
+
 
 	//Possible resistances
 	private Resistencia panelRes, 
@@ -75,10 +59,6 @@ public class PanelControles extends JPanel implements ActionListener{
 	voltaje4,
 	voltaje5,
 	voltaje6;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 
 	//Counter of possible resistances
 	private int contador1,
@@ -95,7 +75,7 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.setBackground(new Color(225,225,225));	
 
 		//Instantiate components
-		this.bResultado= new JButton("Resultado");
+		this.bResultado1= new JButton("Resultado");
 		this.panelRes=new Resistencia();
 		this.panelRes2=new Resistencia();
 		this.panelRes3=new Resistencia();
@@ -130,10 +110,10 @@ public class PanelControles extends JPanel implements ActionListener{
 		//Adds components into the panel
 		this.add(tresInicial);
 		this.add(bPonerRes);
-		this.add(bResultado);
+		this.add(bResultado1);
 
 		//Adds Listeners
-		this.bResultado.addActionListener(this);
+		this.bResultado1.addActionListener(this);
 		this.bPonerRes.addActionListener(new ActionListener(){
 
 			@Override
@@ -175,7 +155,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				this.add(this.arrVol2[j]);
 				//System.out.println("voltaje[j]: "+j);
 			}
-			this.add(bResultado);
+			this.add(bResultado1);
 			this.revalidate();
 		}
 	}
@@ -183,7 +163,7 @@ public class PanelControles extends JPanel implements ActionListener{
 	//Actions of the buttons
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==this.bResultado){
+		if(e.getSource()==this.bResultado1){
 			this.agregaPanel();
 
 			//Sums values of the res array
@@ -193,11 +173,7 @@ public class PanelControles extends JPanel implements ActionListener{
 			this.sumaVoltaje2=0;
 
 			for(int i=0;i<arrRes1.length;i++){					
-<<<<<<< HEAD
-				this.sumaResistencia+=arrRes1[i].getValor();
-=======
 				this.sumaResistencia1+=arrRes1[i].getValor();
->>>>>>> origin/master
 			}
 			for(int j=0;j<arrVol1.length;j++){
 				this.sumaVoltaje1+=arrVol1[j].getValor();
@@ -210,19 +186,12 @@ public class PanelControles extends JPanel implements ActionListener{
 				this.sumaVoltaje2+=arrVol2[j].getValor();
 			}
 
-<<<<<<< HEAD
-			this.lSumaResistencias.setText("Suma: "+this.sumaResistencia);
-			this.lSumaVoltajes.setText("Voltaje; "+this.sumaVoltaje);
-			this.pr.paintComponent(getGraphics());
-=======
-			//this.pr.dibujaCircuito(getGraphics());
 			try {
 				this.formula();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
->>>>>>> origin/master
 		}
 	}
 

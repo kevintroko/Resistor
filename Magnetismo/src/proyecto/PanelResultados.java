@@ -18,17 +18,9 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PanelResultados extends JPanel {	
-<<<<<<< HEAD
-	
+
 	public PanelResultados() {
 		super();
-
-		((FlowLayout)this.getLayout()).setAlignment(FlowLayout.LEFT);
-=======
-	public PanelResultados() {
-		super();
-
->>>>>>> origin/master
 		this.setPreferredSize(new Dimension(440,680));
 		this.setBackground(new Color(251,250,250));
 		
