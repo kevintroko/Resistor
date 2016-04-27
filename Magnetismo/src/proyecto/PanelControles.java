@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PanelControles extends JPanel implements ActionListener{
+	
+	PanelResultados pr;
 	//Buttons
 	private JButton bResultado;
 	
@@ -55,7 +57,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				contadorT;
 
 	//Constructor
-	public PanelControles() {
+	public PanelControles(PanelResultados pr) {
 		super();
 		((FlowLayout)this.getLayout()).setAlignment(FlowLayout.CENTER);
 		this.setPreferredSize(new Dimension(200,720));
@@ -77,6 +79,7 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.voltaje6=new Voltaje();
 		this.lSumaResistencias=new JLabel();
 		this.lSumaVoltajes=new JLabel();
+		this.pr=pr;
 
 		//Add components into the array
 		arrRes[0]=this.panelRes;
@@ -140,6 +143,7 @@ public class PanelControles extends JPanel implements ActionListener{
 			}
 			
 			this.lSumaResistencias.setText("Suma: "+this.sumaResistencia);
+			this.pr.dibujaCircuito(getGraphics());
 		}
 	}
 
