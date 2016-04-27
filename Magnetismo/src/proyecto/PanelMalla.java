@@ -152,6 +152,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 					System.out.println("num r1: "+pc.getContadorR1());
 					pc.agregaPanel();
 					
+					
 				}else if(this.componente=="voltaje"){
 					pc.setContadorV1();
 					System.out.println("num v1: "+pc.getContadorV1());

@@ -1,7 +1,9 @@
 package proyecto;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 
@@ -23,12 +25,6 @@ public class MainProyecto extends JFrame{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setPreferredSize(new Dimension(1080, 720));
 		
-<<<<<<< HEAD
-		PanelControles pc = new PanelControles();	
-		this.add(pc, BorderLayout.WEST);
-
-=======
->>>>>>> origin/master
 		PanelResultados pr = new PanelResultados();
 		this.add(pr, BorderLayout.EAST);
 		
@@ -45,7 +41,6 @@ public class MainProyecto extends JFrame{
 		this.pack();
 		this.setVisible(true);
 		
-<<<<<<< HEAD
 		GaussJordan ecuación = new GaussJordan();
 
 		try {
@@ -53,9 +48,6 @@ public class MainProyecto extends JFrame{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-=======
-		
->>>>>>> origin/master
 	}
 
 	public static void main(String[] args){
