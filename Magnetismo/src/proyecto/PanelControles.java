@@ -234,7 +234,7 @@ public class PanelControles extends JPanel implements ActionListener{
 	public void formula() throws IOException{
 		System.out.println(this.sumaResistencia1+"i1+"+resistenciaV+"i2="+this.sumaVoltaje1);
 		System.out.println(this.sumaResistencia2+"i1+"+resistenciaV+"i2="+this.sumaVoltaje2);
-		PrintWriter pw=new PrintWriter(new FileWriter("in1."));
+		PrintWriter pw=new PrintWriter(new FileWriter("formula.txt"));
 		pw.print(2);
 		pw.print(" ");
 		pw.println(3);

@@ -88,7 +88,8 @@ class GaussJordan{
 		    }
 		}
 	    
-	    /*valor_i1 = valor_i1.substring(valor_i1.length() - 4);
+	   /*if(valor_i1!=null){
+	    valor_i1 = valor_i1.substring(valor_i1.length() - 4);
 	    StringTokenizer string = new StringTokenizer(valor_i1);
 	    while(string.hasMoreTokens()){
 	    	
@@ -101,8 +102,10 @@ class GaussJordan{
 	    	valor_i2 = string2.nextToken(" ");
 	    }
 	   i1 = Integer.parseInt(valor_i1);
-	   i2 = Integer.parseInt(valor_i2);*/
-	    
+	   i2 = Integer.parseInt(valor_i2);
+	   }*/
+	   
+	   System.out.println("valor i1 es:"+valor_i1);
    }
 
    // main()
