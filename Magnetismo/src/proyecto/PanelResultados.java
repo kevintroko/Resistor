@@ -18,17 +18,11 @@ import java.io.IOException;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class PanelResultados extends JPanel {
-<<<<<<< HEAD
-	public PanelResultados() {
-		super();
-=======
-	
+public class PanelResultados extends JPanel {	
 	
 	public PanelResultados() {
 		super();
 
->>>>>>> origin/master
 		((FlowLayout)this.getLayout()).setAlignment(FlowLayout.LEFT);
 		this.setPreferredSize(new Dimension(440,680));
 		this.setBackground(new Color(251,250,250));
@@ -44,7 +38,8 @@ public class PanelResultados extends JPanel {
 		System.out.println(ecuación.geti2());
 	}
 	
-	public void dibujaCircuito(Graphics g){
+	public void paintComponent(Graphics g){
+		
 		super.paintComponent(g);
 		g.setColor(new Color(23,150,23));
 		
@@ -57,13 +52,14 @@ public class PanelResultados extends JPanel {
 		
 		g.drawLine(380, 380, 380, 460);
 		g.drawLine(380, 460, 260, 460);
-
+		
 		g.drawLine(160, 460, 60, 460);
 		g.drawLine(60, 460, 60, 380);
-
+		
 		g.drawLine(60, 300, 60, 220);
 		g.drawLine(60, 60, 60, 140);
 		
 		g.drawLine(60, 260, 380, 260);
 	}
+
 }

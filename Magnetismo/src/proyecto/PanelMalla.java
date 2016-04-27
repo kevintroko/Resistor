@@ -30,7 +30,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 	bComponente6;
 
 	private PanelControles pc;
-	private String componente;
+	private String componente, comp1, comp2, comp3, comp4, comp5, comp6;
 
 	ImageIcon iC;
 	ImageIcon iCo;
@@ -147,7 +147,6 @@ public class PanelMalla extends JPanel implements ActionListener{
 			//Adds numbers to the sum in the panel controls
 			if(e.getSource()==bComponente1||e.getSource()==bComponente2||e.getSource()==bComponente6){
 				if(this.componente=="resistencia"){
-					System.out.println(this.componente);
 					pc.setContadorR1();
 					System.out.println("num r1: "+pc.getContadorR1());
 					pc.agregaPanel();

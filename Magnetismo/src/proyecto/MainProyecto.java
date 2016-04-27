@@ -22,16 +22,10 @@ public class MainProyecto extends JFrame{
 		super("Circuitos");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setPreferredSize(new Dimension(1080, 720));
-		
-<<<<<<< HEAD
-		PanelControles pc = new PanelControles();	
-		this.add(pc, BorderLayout.WEST);
 
-=======
->>>>>>> origin/master
 		PanelResultados pr = new PanelResultados();
 		this.add(pr, BorderLayout.EAST);
-		
+
 		PanelControles pc = new PanelControles(pr);	
 		this.add(pc, BorderLayout.WEST);
 
@@ -40,22 +34,11 @@ public class MainProyecto extends JFrame{
 
 		PanelCircuitos pcr = new PanelCircuitos(pm);
 		this.add(pcr, BorderLayout.SOUTH);
-		
+
 		this.setLocation(50, 0);
 		this.pack();
 		this.setVisible(true);
-		
-<<<<<<< HEAD
-		GaussJordan ecuación = new GaussJordan();
 
-		try {
-			ecuación.matrices(new FileReader("in1."), new FileWriter("outfile"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-=======
-		
->>>>>>> origin/master
 	}
 
 	public static void main(String[] args){
