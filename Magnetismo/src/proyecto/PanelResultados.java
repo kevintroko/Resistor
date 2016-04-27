@@ -9,7 +9,6 @@ package proyecto;
  */
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.io.FileReader;
 import java.io.FileWriter;

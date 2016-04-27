@@ -44,7 +44,7 @@ public class PanelCircuitos extends JPanel implements ActionListener{
 		this.capacitorIMG = new ImageIcon(getClass().getResource("capacitor.png"));
 		this.conductorIMG =new ImageIcon(getClass().getResource("conductor.png"));
 		this.voltajeIMG = new ImageIcon(getClass().getResource("voltaje.png"));
-		
+
 		 Image img = resistenciaIMG.getImage() ;  
 		 Image newimg = img.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
 		 resistenciaIMG = new ImageIcon( newimg );
