@@ -71,9 +71,9 @@ class GaussJordan{
 
 		    for (int i = 0; i < 20; i++) {
 		    	sCurrentLine = br.readLine();
-		    	if (i == 15) {
+		    	if (i == 11) {
 		    		valor_i1 = sCurrentLine;
-				}if(i == 16){
+				}if(i == 12){
 					valor_i2 = sCurrentLine;
 				}
 			}
@@ -88,7 +88,7 @@ class GaussJordan{
 		    }
 		}
 	    
-	   /*if(valor_i1!=null){
+	   if(valor_i1!=null){
 	    valor_i1 = valor_i1.substring(valor_i1.length() - 4);
 	    StringTokenizer string = new StringTokenizer(valor_i1);
 	    while(string.hasMoreTokens()){
@@ -103,9 +103,10 @@ class GaussJordan{
 	    }
 	   i1 = Integer.parseInt(valor_i1);
 	   i2 = Integer.parseInt(valor_i2);
-	   }*/
+	   }
 	   
 	   System.out.println("valor i1 es:"+valor_i1);
+	   System.out.println("valor i2 es: "+valor_i2);
    }
 
    // main()
