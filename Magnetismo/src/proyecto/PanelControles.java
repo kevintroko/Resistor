@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,7 +28,7 @@ public class PanelControles extends JPanel implements ActionListener{
 	//Buttons
 	private JButton bResultado1;
 
-	private PanelResultados pr;
+	private GaussJordan gauss = new GaussJordan();
 	
 	//Resistances array and voltages
 	private Resistencia[] arrRes1=new Resistencia[3];
@@ -88,7 +89,6 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.voltaje4=new Voltaje();
 		this.voltaje5=new Voltaje();
 		this.voltaje6=new Voltaje();
-		this.pr=pr;
 		this.tresInicial=new JTextField(6);
 		this.bPonerRes=new JButton("Ok");
 		
@@ -234,12 +234,13 @@ public class PanelControles extends JPanel implements ActionListener{
 	public void formula() throws IOException{
 		System.out.println(this.sumaResistencia1+"i1+"+resistenciaV+"i2="+this.sumaVoltaje1);
 		System.out.println(this.sumaResistencia2+"i1+"+resistenciaV+"i2="+this.sumaVoltaje2);
-		PrintWriter pw=new PrintWriter(new FileWriter("formula.txt"));
+		PrintWriter pw=new PrintWriter(new FileWriter("in1."));
 		pw.print(2);
 		pw.print(" ");
 		pw.println(3);
 		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
 		pw.println(this.sumaResistencia2+" "+resistenciaV+" "+this.sumaVoltaje2);
 		pw.close();	
+		gauss.matrices(new FileReader("in1."), new FileWriter("outfile"));
 	}
 }

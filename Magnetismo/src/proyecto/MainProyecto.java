@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JFrame;
+import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 /**
  * PROJECT METODOS NUMERICOS
@@ -40,7 +41,6 @@ public class MainProyecto extends JFrame{
 		this.setLocation(50, 0);
 		this.pack();
 		this.setVisible(true);
-
 		
 		GaussJordan ecuación = new GaussJordan();
 		
@@ -50,6 +50,7 @@ public class MainProyecto extends JFrame{
 			e.printStackTrace();
 		}
 	}
+
 
 	public static void main(String[] args){
 		@SuppressWarnings("unused")
