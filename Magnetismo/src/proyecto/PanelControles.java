@@ -22,18 +22,21 @@ import javax.swing.JPanel;
 public class PanelControles extends JPanel implements ActionListener{
 	//Buttons
 	private JButton bResultado;
-	
+
 	//JLABEL
 	private JLabel lSumaVoltajes,
 				   lSumaResistencias;
 
 	//Resistances array and voltages
-	private Resistencia[] arrRes = new Resistencia[6];
-	private Voltaje[] arrVol= new Voltaje[6];
-	
+	private Resistencia[] arrRes1=new Resistencia[3];
+	private Resistencia[] arrRes2=new Resistencia[3];
+	private Voltaje[] arrVol1=new Voltaje[3];
+	private Voltaje[] arrVol2=new Voltaje[3];
+
+			
 	private int sumaVoltaje,
 				sumaResistencia;
-	
+
 	//Possible resistances
 	private Resistencia panelRes, 
 						panelRes2,
@@ -41,7 +44,7 @@ public class PanelControles extends JPanel implements ActionListener{
 						panelRes4,
 						panelRes5,
 						panelRes6;
-	
+
 	private Voltaje voltaje1,
 					voltaje2,
 					voltaje3,
@@ -49,10 +52,11 @@ public class PanelControles extends JPanel implements ActionListener{
 					voltaje5,
 					voltaje6;
 
+
 	//Counter of possible resistances
-	private int contador,
-				contadorV,
-				contadorT;
+	private int contador1,contador2,
+	contadorV1, contadorV2,
+	contadorT;
 
 	//Constructor
 	public PanelControles() {
@@ -79,45 +83,59 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.lSumaVoltajes=new JLabel();
 
 		//Add components into the array
-		arrRes[0]=this.panelRes;
-		arrRes[1]=this.panelRes2;
-		arrRes[2]=this.panelRes3;
-		arrRes[3]=this.panelRes4;
-		arrRes[4]=this.panelRes5;
-		arrRes[5]=this.panelRes6;
-		arrVol[0]=this.voltaje1;
-		arrVol[1]=this.voltaje2;
-		arrVol[2]=this.voltaje3;
-		arrVol[3]=this.voltaje4;
-		arrVol[4]=this.voltaje5;
-		arrVol[5]=this.voltaje6;
+		arrRes1[0]=this.panelRes;
+		arrRes1[1]=this.panelRes2;
+		arrRes1[2]=this.panelRes3;
+		arrRes2[0]=this.panelRes4;
+		arrRes2[1]=this.panelRes5;
+		arrRes2[2]=this.panelRes6;
+
+		arrVol1[0]=this.voltaje1;
+		arrVol1[1]=this.voltaje2;
+		arrVol1[2]=this.voltaje3;
+		arrVol2[0]=this.voltaje4;
+		arrVol2[1]=this.voltaje5;
+		arrVol2[2]=this.voltaje6;
 
 		//Adds components into the panel
 		this.add(bResultado);
 		this.add(lSumaResistencias);
 		this.add(lSumaVoltajes);
-		
+
 		//Adds Listeners
 		this.bResultado.addActionListener(this);
 	}
 
 	//Adds the resistances and voltages into the array
 	public void agregaPanel(){
-		System.out.println("contador res: "+this.contador);
-		System.out.println("contador vol: "+this.contadorV);
-		this.contadorT=this.contador+this.contadorV;
+		System.out.println("contador res1: "+this.contador1);
+		System.out.println("contador res2: "+this.contador2);
+		System.out.println("contador vol1: "+this.contadorV1);
+		System.out.println("contador vol2 "+this.contadorV2);
+		
+		this.contadorT=this.contador1+this.contador2+this.contadorV1+this.contadorV2;
 		System.out.println("contador total: "+this.contadorT+"\n");
 
 		if(this.contadorT<7){
-			for(int i=0;i<this.contador;i++){
-				this.add(this.arrRes[i]);
-				//System.out.println("resitencia[i]: "+i);
+			for(int i=0;i<this.contador1;i++){
+					this.add(this.arrRes1[i]);
+					//System.out.println("resitencia[i]: "+i);
 			}
 			
-			for(int j=0;j<this.contadorV;j++){
-				this.add(this.arrVol[j]);
-				//System.out.println("voltaje[j]: "+j);
+			for(int i=0;i<this.contador2;i++){
+				this.add(this.arrRes2[i]);
+				//System.out.println("resitencia[i]: "+i);
 			}
+
+			for(int j=0;j<this.contadorV1;j++){
+					this.add(this.arrVol1[j]);
+					//System.out.println("voltaje[j]: "+j);
+			}
+			
+			for(int j=0;j<this.contadorV2;j++){
+				this.add(this.arrVol2[j]);
+				//System.out.println("voltaje[j]: "+j);
+		    }
 			this.add(bResultado);
 			this.revalidate();
 		}
@@ -131,49 +149,53 @@ public class PanelControles extends JPanel implements ActionListener{
 			//Sums values of the res array
 			this.sumaResistencia=0;
 			this.sumaVoltaje=0;
-			
-			for(int i=0;i<arrRes.length;i++){
-				this.sumaResistencia+=arrRes[i].getValor();
+
+			for(int i=0;i<arrRes1.length;i++){					
+					this.sumaResistencia+=arrRes1[i].getValor();
 			}
-			for(int j=0;j<arrVol.length;j++){
-				this.sumaVoltaje+=arrVol[j].getValor();
+			for(int j=0;j<arrVol1.length;j++){
+				this.sumaVoltaje+=arrVol1[j].getValor();
 			}
 			
+			for(int i=0;i<arrRes2.length;i++){					
+				this.sumaResistencia+=arrRes2[i].getValor();
+			}
+			for(int j=0;j<arrVol2.length;j++){
+				this.sumaVoltaje+=arrVol2[j].getValor();
+			}
+
 			this.lSumaResistencias.setText("Suma: "+this.sumaResistencia);
+			this.lSumaVoltajes.setText("Voltaje; "+this.sumaVoltaje);
 		}
 	}
 
 	//Pseudo Setters
-	public void setContadorR(){
-		this.contador++;	
+	public void setContadorR1(){
+		this.contador1++;	
 	}
-
-	public void setContadorV(){
-		this.contadorV++;	
+	public void setContadorR2(){
+		this.contador2++;	
 	}
-	
+	public void setContadorV1(){
+		this.contadorV1++;	
+	}
+	public void setContadorV2(){
+		this.contadorV2++;	
+	}
 	public void setContadorT(){
 		this.contadorT++;
 	}
 
-	//Getter
-	public int getContadorR(){
-		return this.contador;
-	}
+	//Getters
+	public int getContadorR1(){return this.contador1;}
+	public int getContadorR2(){return this.contador2;}
 
-	public int getContadorV() {
-		return this.contadorV;
-	}
+	public int getContadorV1() {return this.contadorV1;}
+	public int getContadorV2() {return this.contadorV2;}
 
-	public int getContadorTotal(){
-		return this.contadorT;
-	}
+	public int getContadorTotal(){return this.contadorT;}
 
-	public Resistencia[] getArray() {
-		return this.arrRes;
-	}
-	
-	public Voltaje[] getArrayV(){
-		return this.arrVol;
-	}
+	public Resistencia[] getArray() {return this.arrRes1;}
+
+	public Voltaje[] getArrayV(){return this.arrVol1;}
 }

@@ -24,7 +24,7 @@ public class MainProyecto extends JFrame{
 		PanelControles pc = new PanelControles();	
 		this.add(pc, BorderLayout.WEST);
 
-		PanelResultados pr = new PanelResultados(pc);
+		PanelResultados pr = new PanelResultados();
 		this.add(pr, BorderLayout.EAST);
 		
 

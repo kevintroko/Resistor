@@ -50,27 +50,27 @@ public class PanelMalla extends JPanel implements ActionListener{
 		this.iCo=new ImageIcon(getClass().getResource("conductor.png"));
 		this.iV=new ImageIcon(getClass().getResource("voltaje.png"));
 		this.iR=new ImageIcon(getClass().getResource("resistencia.png"));
-		
-		 //Change size: Resistor Image  
-		 Image img = iR.getImage() ;  
-		 Image newimg = img.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
-		 iR = new ImageIcon( newimg );
-		 
-		 //Change size: Capacitor Image
-		 Image img2 = iC.getImage() ;  
-		 Image newimg2 = img2.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
-		 iC = new ImageIcon( newimg2 );
-		 
-		 //Change size: conductor Image  
-		 Image img3 = iCo.getImage() ;  
-		 Image newimg3 = img3.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
-		 iCo = new ImageIcon( newimg3 );
-		   
-		 //Change size: voltage Image
-		 Image img4 = iV.getImage() ;  
-		 Image newimg4 = img4.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
-		 iV = new ImageIcon( newimg4 );
-		 
+
+		//Change size: Resistor Image  
+		Image img = iR.getImage() ;  
+		Image newimg = img.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		iR = new ImageIcon( newimg );
+
+		//Change size: Capacitor Image
+		Image img2 = iC.getImage() ;  
+		Image newimg2 = img2.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		iC = new ImageIcon( newimg2 );
+
+		//Change size: conductor Image  
+		Image img3 = iCo.getImage() ;  
+		Image newimg3 = img3.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		iCo = new ImageIcon( newimg3 );
+
+		//Change size: voltage Image
+		Image img4 = iV.getImage() ;  
+		Image newimg4 = img4.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		iV = new ImageIcon( newimg4 );
+
 		this.bComponente1=new JButton("Componente1");
 		this.bComponente2=new JButton("Componente2");
 		this.bComponente3=new JButton("Componente3");
@@ -145,26 +145,50 @@ public class PanelMalla extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		if(pc.getContadorTotal()<6){
 			//Adds numbers to the sum in the panel controls
-			if(this.componente=="resistencia"){
-				System.out.println(this.componente);
-				pc.setContadorR();
-				System.out.println("num r: "+pc.getContadorR());
-				pc.agregaPanel();
-			}else if(this.componente=="voltaje"){
-				pc.setContadorV();
-				System.out.println("num v: "+pc.getContadorV());
-				pc.agregaPanel();
-			}else if(this.componente=="conductor"){
-				pc.setContadorT();
-			}else if(this.componente=="capacitor"){
-				pc.setContadorT();
-			}else{
-				System.out.println("no hay boton presionado");
+			if(e.getSource()==bComponente1||e.getSource()==bComponente2||e.getSource()==bComponente6){
+				if(this.componente=="resistencia"){
+					System.out.println(this.componente);
+					pc.setContadorR1();
+					System.out.println("num r1: "+pc.getContadorR1());
+					pc.agregaPanel();
+					
+				}else if(this.componente=="voltaje"){
+					pc.setContadorV1();
+					System.out.println("num v1: "+pc.getContadorV1());
+					pc.agregaPanel();
+				}else if(this.componente=="conductor"){
+					pc.setContadorT();
+				}else if(this.componente=="capacitor"){
+					pc.setContadorT();
+				}else{
+					System.out.println("no hay boton presionado");
+				}
+			}
+			
+			else if(e.getSource()==bComponente3||e.getSource()==bComponente4||e.getSource()==bComponente5){
+				if(this.componente=="resistencia"){
+					System.out.println(this.componente);
+					pc.setContadorR2();
+					System.out.println("num r2: "+pc.getContadorR2());
+					pc.agregaPanel();
+					
+				}else if(this.componente=="voltaje"){
+					pc.setContadorV2();
+					System.out.println("num v2: "+pc.getContadorV2());
+					pc.agregaPanel();
+					
+				}else if(this.componente=="conductor"){
+					pc.setContadorT();
+				}else if(this.componente=="capacitor"){
+					pc.setContadorT();
+				}else{
+					System.out.println("no hay boton presionado");
+				}
 			}
 		}else{
 			JOptionPane.showMessageDialog(this, "Limit reached");
 		}
-		
+
 		//Draws Button
 		if(e.getSource() == this.bComponente1){
 			this.checar(this.bComponente1);
@@ -180,7 +204,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 			this.checar(this.bComponente6);
 		}
 	}
-	
+
 	//Checks which component has to draw
 	public void checar(JButton boton){
 		if(componente=="resistencia"){

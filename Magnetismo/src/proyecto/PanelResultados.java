@@ -16,12 +16,8 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PanelResultados extends JPanel {
-	PanelControles pc;
-	
-	
-	public PanelResultados(PanelControles pc) {
+	public PanelResultados() {
 		super();
-		this.pc=pc;
 		((FlowLayout)this.getLayout()).setAlignment(FlowLayout.LEFT);
 		this.setPreferredSize(new Dimension(440,680));
 		this.setBackground(new Color(251,250,250));
@@ -52,10 +48,5 @@ public class PanelResultados extends JPanel {
 		g.drawLine(60, 60, 60, 140);
 		
 		g.drawLine(60, 260, 380, 260);
-	}
-
-	public void consigueBoton(){
-		pc.getArray();
-		pc.getArrayV();
 	}
 }
