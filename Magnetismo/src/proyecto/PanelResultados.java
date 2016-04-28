@@ -131,6 +131,7 @@ public class PanelResultados extends JPanel {
 	public boolean getIsPainted() {
 		return this.isPainted;
 	}
+
 	public void setImage(ImageIcon image){
 		this.image = image;
 	}
