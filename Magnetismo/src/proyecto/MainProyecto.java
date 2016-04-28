@@ -19,7 +19,6 @@ import javax.swing.JFrame;
 
 public class MainProyecto extends JFrame{
 	private static final long serialVersionUID = 1L;
-
 	public MainProyecto(){
 		super("Circuitos");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -32,8 +31,12 @@ public class MainProyecto extends JFrame{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
+		
+=======
 
 
+>>>>>>> origin/master
 		PanelResultados pr = new PanelResultados();
 		this.add(pr, BorderLayout.EAST);
 
@@ -60,7 +63,6 @@ public class MainProyecto extends JFrame{
 		}
 
 	}
-
 
 	public static void main(String[] args){
 		@SuppressWarnings("unused")
