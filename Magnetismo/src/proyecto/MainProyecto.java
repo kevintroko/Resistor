@@ -31,12 +31,7 @@ public class MainProyecto extends JFrame{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-		
-=======
 
-
->>>>>>> origin/master
 		PanelResultados pr = new PanelResultados();
 		this.add(pr, BorderLayout.EAST);
 
