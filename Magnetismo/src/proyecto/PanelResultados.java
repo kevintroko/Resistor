@@ -5,7 +5,7 @@ package proyecto;
  * @author Mark Octavio Rivera Acosta A01234567
  * 
  * Started in April 6th, 2016
- * Last modified in April 26th, 2016
+ * Last modified in April 28th, 2016
  */
 import java.awt.Color;
 import java.awt.Dimension;
@@ -53,7 +53,6 @@ public class PanelResultados extends JPanel {
 		super();
 		this.setPreferredSize(new Dimension(440,680));
 		this.setBackground(new Color(251,250,250));
-
 	}
 
 	/**
@@ -74,7 +73,6 @@ public class PanelResultados extends JPanel {
 	 * @param g
 	 */
 	public void paintCircuit(Graphics g) {
-
 		int x = 160;
 		int y = 260;
 		g.drawLine(x, y, x+10, y-20);
