@@ -545,11 +545,5 @@ public class PanelControles extends JPanel implements ActionListener{
 				this.lComponente6.setText("Voltaje 6");
 			}
 		}
-		System.out.println("Componente 1:"+componente1);
-		System.out.println("Componente 2:"+componente2);
-		System.out.println("Componente 3:"+componente3);
-		System.out.println("Componente 4:"+componente4);
-		System.out.println("Componente 5:"+componente5);
-		System.out.println("Componente 6:"+componente6);
 	}
 }
