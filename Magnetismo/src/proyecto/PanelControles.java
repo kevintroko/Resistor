@@ -70,7 +70,13 @@ public class PanelControles extends JPanel implements ActionListener{
 	componentev5,
 	componentev6;
 
-
+	private boolean co1,
+					co2,
+					co3,
+					co4,
+					co5,
+					co6;
+					
 
 	private JTextField tfComponente1,
 	tfComponente2,
@@ -423,6 +429,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			this.multiplicaI();
 		}
 	}
 
@@ -440,9 +447,8 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
 		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
+
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
-		gj.geti1();
-		gj.geti2();
 	}
 
 	public void setComponente(String componente){
@@ -456,6 +462,7 @@ public class PanelControles extends JPanel implements ActionListener{
 	public void addArray(){
 		if(this.componente=="resistencia"){
 			if(this.num==1){
+				this.co1=true;
 				try {
 					this.componente1=Double.parseDouble(this.tfComponente1.getText());					
 				} catch (Exception e) {
@@ -463,6 +470,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente1.setText("Resistencia 1");
 			}else if(this.num==2){
+				this.co2=true;
 				try {
 					this.componente2=Double.parseDouble(this.tfComponente2.getText());					
 				} catch (Exception e) {
@@ -470,6 +478,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente2.setText("Resistencia 2");
 			}else if(this.num==3){
+				this.co3=true;
 				try {
 					this.componente3=Double.parseDouble(this.tfComponente3.getText());					
 				} catch (Exception e) {
@@ -477,6 +486,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente3.setText("Resistencia 3");
 			}else if(this.num==4){
+				this.co4=true;
 				try {
 					this.componente4=Double.parseDouble(this.tfComponente4.getText());					
 				} catch (Exception e) {
@@ -484,6 +494,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente4.setText("Resistencia 4");
 			}else if(this.num==5){
+				this.co5=true;
 				try {
 					this.componente5=Double.parseDouble(this.tfComponente5.getText());					
 				} catch (Exception e) {
@@ -491,6 +502,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente5.setText("Resistencia 5");
 			}else if(this.num==6){
+				this.co6=true;
 				try {
 					this.componente6=Double.parseDouble(this.tfComponente6.getText());					
 				} catch (Exception e) {
@@ -500,6 +512,7 @@ public class PanelControles extends JPanel implements ActionListener{
 			}
 		}else if(this.componente=="voltaje"){
 			if(this.num==1){
+				this.co1=false;
 				try {
 					System.out.println("soy un voltaje 2");
 					this.componentev1=Double.parseDouble(this.tfComponente1.getText());
@@ -509,6 +522,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente1.setText("Voltaje 1");;
 			}else if(this.num==2){
+				this.co2=false;
 				try {
 					this.componentev2=Double.parseDouble(this.tfComponente2.getText());					
 				} catch (Exception e) {
@@ -516,6 +530,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente2.setText("Voltaje 2");
 			}else if(this.num==3){
+				this.co3=false;
 				try {
 					this.componentev3=Double.parseDouble(this.tfComponente3.getText());					
 				} catch (Exception e) {
@@ -523,6 +538,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente3.setText("Voltaje 3");
 			}else if(this.num==4){
+				this.co4=false;
 				try {
 					this.componentev4=Double.parseDouble(this.tfComponente4.getText());					
 				} catch (Exception e) {
@@ -530,6 +546,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente4.setText("Voltaje 4");
 			}else if(this.num==5){
+				this.co5=false;
 				try {
 					this.componentev5=Double.parseDouble(this.tfComponente5.getText());					
 				} catch (Exception e) {
@@ -537,6 +554,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente5.setText("Voltaje 5");
 			}else if(this.num==6){
+				this.co6=false;
 				try {
 					this.componentev6=Double.parseDouble(this.tfComponente6.getText());					
 				} catch (Exception e) {
@@ -545,5 +563,40 @@ public class PanelControles extends JPanel implements ActionListener{
 				this.lComponente6.setText("Voltaje 6");
 			}
 		}
+<<<<<<< HEAD
+=======
+	}
+	
+	public void multiplicaI(){
+		double i1=gj.geti1();
+		double i2=gj.geti2();
+		double cable1,cable2,cable3,cable4,cable5,cable6;
+		
+		if(this.co1){
+			cable1=componente1*i1;			
+		}else cable1=componente1;
+		
+		if(this.co2){			
+			cable2=componente2*i1;
+		}else cable2=componente2;
+		
+		if(this.co3){			
+			cable3=componente3*i2;
+		}else cable3=componente3;
+		
+		if(this.co4){			
+			cable4=componente4*i2;
+		}else cable4=componente4;
+		
+		if(this.co5){			
+			cable5=componente5*i2;
+		}else cable5=componente5;
+		
+		if(this.co6){			
+			cable6=componente6*i1;
+		}else cable6=componente6;
+		
+		pr.setCables(cable1, cable2, cable3, cable4, cable5, cable6);
+>>>>>>> origin/master
 	}
 }

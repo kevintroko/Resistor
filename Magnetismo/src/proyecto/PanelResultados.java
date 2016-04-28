@@ -21,12 +21,28 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PanelResultados extends JPanel {
-	
+
 	//Boolean to enable the paintComponent() in panelResultados
 	private boolean isPainted = false;
 	private ImageIcon image;
 	private ImageIcon[] imagenes = new ImageIcon[6];
 	private String componente;
+
+	private double cable1,
+	cable2,
+	cable3,
+	cable4,
+	cable5,
+	cable6;
+	
+	public void setCables(double a,double b,double c,double d,double e,double f){
+		this.cable1=a;
+		this.cable2=b;
+		this.cable3=c;
+		this.cable4=d;
+		this.cable5=e;
+		this.cable6=f;
+	}
 	
 	/**
 	 * Class constructor
@@ -37,9 +53,9 @@ public class PanelResultados extends JPanel {
 		super();
 		this.setPreferredSize(new Dimension(440,680));
 		this.setBackground(new Color(251,250,250));
-		
+
 	}
-	
+
 	/**
 	 * If button on PanelControles is pressed, paint a new circuit
 	 * Set boolean isPainted to false
@@ -51,14 +67,14 @@ public class PanelResultados extends JPanel {
 		}
 		this.isPainted = false;
 	}
-	
+
 	/**
 	 * Draw a new circuit using the size of the electric current 
 	 * with identifier colors that represents the size of the charge.
 	 * @param g
 	 */
 	public void paintCircuit(Graphics g) {
-		
+
 		int x = 160;
 		int y = 260;
 		g.drawLine(x, y, x+10, y-20);
@@ -68,11 +84,11 @@ public class PanelResultados extends JPanel {
 		g.drawLine(x+70,y+20,x+90,y-20);
 		g.drawLine(x+90,y-20,x+110,y+20);
 		g.drawLine(x+110,y+20,x+120,y);
-		
+
 		g.setColor(getColor(40));
 		g.drawLine(60, 60, 160, 60);
 		g.drawLine(60, 60, 60, 140);
-		
+
 		g.setColor(getColor(70));
 		g.drawLine(260, 60, 380, 60);
 		g.drawLine(380, 60, 380, 140);
@@ -87,22 +103,22 @@ public class PanelResultados extends JPanel {
 		g.setColor(getColor(70));
 		g.drawLine(160, 460, 60, 460);
 		g.drawLine(60, 460, 60, 380);
-		
+
 		g.setColor(getColor(120));
 		g.drawLine(60, 300, 60, 220);
 		g.drawLine(60, 260, 160, 260);
 
 		g.drawLine(280, 260, 380, 260);
-		
+
 		g.drawImage(getImageAr(0).getImage(), 180, 30, 80, 60, null);
 		g.drawImage(getImageAr(1).getImage(), 350, 150, 80, 60, null);
 		g.drawImage(getImageAr(2).getImage(), 350, 310, 80, 60, null);
 		g.drawImage(getImageAr(3).getImage(), 180, 430, 80, 60, null);
 		g.drawImage(getImageAr(4).getImage(), 25, 310, 80, 60, null);
 		g.drawImage(getImageAr(5).getImage(), 25, 150, 80, 60, null);
-	
+
 	}
-	
+
 	/**
 	 * set isPainted to true if JButton BResultado is pressed in PanelControles
 	 */
@@ -129,15 +145,15 @@ public class PanelResultados extends JPanel {
 	public String getComponent(){
 		return this.componente;
 	}
-	
+
 	public void setImagenAr(ImageIcon image, int i){
 		this.imagenes[i] = image;
 	}
-	
+
 	public ImageIcon getImageAr(int i){
 		return this.imagenes[i];
 	}
-	
+
 	/**
 	 * Compare the size of a current in a circuit section
 	 * @param corriente
@@ -145,9 +161,9 @@ public class PanelResultados extends JPanel {
 	 * 				this color is assigned to the corresponding circuit section 
 	 */
 	public Color getColor(int corriente){
-		
+
 		Color color = Color.black;
-		
+
 		if (corriente < 60) {
 			color = Color.GREEN;
 		}else if (corriente > 60 & corriente < 100) {
@@ -155,7 +171,6 @@ public class PanelResultados extends JPanel {
 		}else{
 			color = Color.RED;
 		}
-		
 		return color;
 	}
 
