@@ -229,33 +229,16 @@ public class PanelControles extends JPanel implements ActionListener{
 	public double getContadorR2(){
 		return this.contador2;
 	}
-<<<<<<< HEAD
-	public int getContadorV1(){
-=======
 
 	public double getContadorV1(){
->>>>>>> origin/master
 		return this.contadorV1;
 	}
 	public double getContadorV2() {
 		return this.contadorV2;
 	}
-<<<<<<< HEAD
-	public int getContadorTotal(){
-		return this.contadorT;
-	}
-	public JButton getBoton(){
-		return this.bResultado1;
-=======
 
 	public double getContadorTotal(){
 		return this.contadorT;
-	}
-
-	public JButton getBoton(){
-		return this.bResultado1;
-
->>>>>>> origin/master
 	}
 
 	public void formula() throws IOException{
@@ -273,13 +256,6 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
 
-<<<<<<< HEAD
-=======
-
-		gauss.matrices(new FileReader("in1."), new FileWriter("outfile"));
-		//
-
->>>>>>> origin/master
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
 	}
 
