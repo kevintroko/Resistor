@@ -27,13 +27,10 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	//Buttons
 	private JButton bResultado1;
-<<<<<<< HEAD
-	private boolean pinta;
 	private GaussJordan gauss = new GaussJordan();
+	private PanelResultados pr = new PanelResultados();
 
-=======
 	
->>>>>>> origin/master
 	//Resistances array and voltages
 	private Resistencia[] arrRes1=new Resistencia[3];
 	private Resistencia[] arrRes2=new Resistencia[3];
@@ -83,6 +80,7 @@ public class PanelControles extends JPanel implements ActionListener{
 
 		//Instantiate components
 		this.gj=gj;
+		this.pr = pr;
 		this.bResultado1= new JButton("Resultado");
 		this.panelRes=new Resistencia();
 		this.panelRes2=new Resistencia();
@@ -172,6 +170,7 @@ public class PanelControles extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.bResultado1){
 			this.agregaPanel();
+			this.pr.setPaint(true);
 
 			//Sums values of the res array
 			this.sumaResistencia1=0;
@@ -200,6 +199,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				e1.printStackTrace();
 			}
 			this.obtenerI();
+			this.pr.pintaBonito = true;
 		}
 	}
 
@@ -238,6 +238,11 @@ public class PanelControles extends JPanel implements ActionListener{
 	public int getContadorTotal(){
 		return this.contadorT;
 	}
+	
+	public JButton getBoton(){
+		return this.bResultado1;
+		
+	}
 
 	public void formula() throws IOException{
 		this.sumaResistencia1=this.sumaResistencia1*(-1);
@@ -253,10 +258,8 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
 		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
-<<<<<<< HEAD
+
 		gauss.matrices(new FileReader("in1."), new FileWriter("outfile"));
-		this.pinta = true;
-=======
 		//
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
 	}
@@ -264,11 +267,6 @@ public class PanelControles extends JPanel implements ActionListener{
 	public void obtenerI(){
 		System.out.println(gj.geti1());
 		System.out.println(gj.geti2());
->>>>>>> origin/master
-	}
-	
-	public boolean yaPinta(){
-		return this.pinta;
 	}
 
 }
