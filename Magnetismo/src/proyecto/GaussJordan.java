@@ -4,18 +4,18 @@ import java.util.StringTokenizer;
 
 class GaussJordan{
 
-	private int i1, i2;
+	private double i1, i2;
 
 	// swap()
 	// swap row i with row k
 	// pre: A[i][q]==A[k][q]==0 for 1<=q<j
-	static void swap(int[][] A, int i, int k, int j){
-		int m = A[0].length - 1;
-		int temp;
+	static void swap(double[][] a, int i, int k, int j){
+		int m = a[0].length - 1;
+		double temp;
 		for(int q=j; q<=m; q++){
-			temp = A[i][q];
-			A[i][q] = A[k][q];
-			A[k][q] = temp;
+			temp = a[i][q];
+			a[i][q] = a[k][q];
+			a[k][q] = temp;
 		}
 	}
 
@@ -23,36 +23,36 @@ class GaussJordan{
 	// divide row i by A[i][j]
 	// pre: A[i][j]!=0, A[i][q]==0 for 1<=q<j
 	// post: A[i][j]==1;
-	static void divide(int[][] A, int i, int j){
-		int m = A[0].length - 1;
-		for(int q=j+1; q<=m; q++) A[i][q] /= A[i][j];
-		A[i][j] = 1;
+	static void divide(double[][] a, int i, int j){
+		int m = a[0].length - 1;
+		for(int q=j+1; q<=m; q++) a[i][q] /= a[i][j];
+		a[i][j] = 1;
 	}
 
 	// eliminate()
 	// subtract an appropriate multiple of row i from every other row
 	// pre: A[i][j]==1, A[i][q]==0 for 1<=q<j
 	// post: A[p][j]==0 for p!=i
-	static void eliminate(int[][] A, int i, int j){
-		int n = A.length - 1;
-		int m = A[0].length - 1;
+	static void eliminate(double[][] a, int i, int j){
+		int n = a.length - 1;
+		int m = a[0].length - 1;
 		for(int p=1; p<=n; p++){
-			if( p!=i && A[p][j]!=0 ){
+			if( p!=i && a[p][j]!=0 ){
 				for(int q=j+1; q<=m; q++){
-					A[p][q] -= A[p][j]*A[i][q];
+					a[p][q] -= a[p][j]*a[i][q];
 				}
-				A[p][j] = 0;
+				a[p][j] = 0;
 			}
 		}
 	}
 
 	// printMatrix()
 	// print the present state of Matrix A to file out
-	static void printMatrix(PrintWriter out, int[][] A){
-		int n = A.length - 1;
-		int m = A[0].length - 1;
+	static void printMatrix(PrintWriter out, double[][] a){
+		int n = a.length - 1;
+		int m = a[0].length - 1;
 		for(int i=1; i<=n; i++){
-			for(int j=1; j<=m; j++) out.print(A[i][j] + "  ");
+			for(int j=1; j<=m; j++) out.print(a[i][j] + "  ");
 			out.println();
 		}
 		out.println();
@@ -87,21 +87,20 @@ class GaussJordan{
 				ex.printStackTrace();
 			}
 		}
-
-			valor_i1 = valor_i1.substring(valor_i1.length() - 4);
+			System.out.println("renglon i1: " + valor_i1);
 			StringTokenizer string = new StringTokenizer(valor_i1);
 			while(string.hasMoreTokens()){
 
 				valor_i1 = string.nextToken(" ");
 			}
-			valor_i2 = valor_i2.substring(valor_i2.length() - 4);
+			System.out.println("renglon i2: " + valor_i2);
 			StringTokenizer string2 = new StringTokenizer(valor_i2);
 			while(string2.hasMoreTokens()){
 
 				valor_i2 = string2.nextToken(" ");
 			}
-			i1 = Integer.parseInt(valor_i1);
-			i2 = Integer.parseInt(valor_i2);
+			i1 = Double.parseDouble(valor_i1);
+			i2 = Double.parseDouble(valor_i2);
 		
 
 		//System.out.println("valor i1 es:"+valor_i1);
@@ -128,14 +127,14 @@ class GaussJordan{
 		m = 3;
 
 		// declare A to be of size (n+1)x(m+1) and do not use index 0
-		int[][] A = new int[n+1][m+1];
+		double[][] A = new double[n+1][m+1];
 
 		// read next n lines of input file and initialize array A
 		for(i=1; i<=n; i++){
 			line = in.readLine();
 			st = new StringTokenizer(line);
 			for(j=1; j<=m; j++){
-				A[i][j] = Integer.parseInt(st.nextToken());
+				A[i][j] = Double.parseDouble(st.nextToken());
 			}
 		}
 
@@ -189,10 +188,10 @@ class GaussJordan{
 
 	}
 
-	public int geti1(){
+	public double geti1(){
 		return this.i1;
 	}
-	public int geti2(){
+	public double geti2(){
 		return this.i2;
 	}
 }

@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class Resistencia extends JPanel implements ActionListener {
-	private int valor=0;
+	private double valor=0;
 	private JButton bOk, bReset;	
 	private JLabel lLabel;
 	private JTextField tTexto;
@@ -54,7 +54,7 @@ public class Resistencia extends JPanel implements ActionListener {
 	//Actions are performed in this method
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.bOk){
-			this.valor= Integer.parseInt(this.tTexto.getText());
+			this.valor= Double.parseDouble(this.tTexto.getText());
 			//checks its positive
 			if(this.valor<0){
 				JOptionPane.showMessageDialog(null, "NO PUEDEN SER RESISTENCIAS NEGATIVAS");
@@ -72,7 +72,7 @@ public class Resistencia extends JPanel implements ActionListener {
 	}
 
 	//Getter
-	public int getValor(){
+	public double getValor(){
 		return this.valor;
 	}
 }
