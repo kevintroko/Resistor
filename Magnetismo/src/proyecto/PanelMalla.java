@@ -16,11 +16,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PanelMalla extends JPanel implements ActionListener{
+
 	//Declaration 
 	private JButton bComponente1,
 	bComponente2,
@@ -111,7 +111,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 
 	//Draws the initial circuit
 	public void dibujaMalla(Graphics g){
-		
+
 		g.setColor(Color.BLACK);
 		g.drawLine(60, 60, 180, 60);
 		//g.drawRect(160, 20, 100, 80);
@@ -157,78 +157,77 @@ public class PanelMalla extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e){
-		if(pc.getContadorTotal()<6){
-			//Adds numbers to the sum in the panel controls
-			if(e.getSource()==bComponente1||e.getSource()==bComponente2||e.getSource()==bComponente6){
-				
-				if(this.componente=="resistencia"){
-					pc.setContadorR1();
-					//System.out.println("num r1: "+pc.getContadorR1());
-					pc.agregaPanel();
-
-				}else if(this.componente=="voltaje"){
-					pc.setContadorV1();
-					//System.out.println("num v1: "+pc.getContadorV1());
-					pc.agregaPanel();
-				}else if(this.componente=="conductor"){
-					pc.setContadorT();
-				}else if(this.componente=="capacitor"){
-					pc.setContadorT();
-				}else{
-					System.out.println("no hay boton presionado");
-				}
-			}
-
-			else if(e.getSource()==bComponente3||e.getSource()==bComponente4||e.getSource()==bComponente5){
-				if(this.componente=="resistencia"){
-					//System.out.println(this.componente);
-					pc.setContadorR2();
-					//System.out.println("num r2: "+pc.getContadorR2());
-					pc.agregaPanel();
-
-				}else if(this.componente=="voltaje"){
-					pc.setContadorV2();
-					//System.out.println("num v2: "+pc.getContadorV2());
-					pc.agregaPanel();
-
-				}else if(this.componente=="conductor"){
-					pc.setContadorT();
-				}else if(this.componente=="capacitor"){
-					pc.setContadorT();
-				}else{
-					System.out.println("no hay boton presionado");
-				}
-			}
-		}else{
-			JOptionPane.showMessageDialog(this, "Limit reached");
-		}
-
 		//Draws Button
 		if(e.getSource() == this.bComponente1){
+			pc.setNum(1);
 			this.checar(this.bComponente1);
 		}else if(e.getSource()==this.bComponente2){
+			pc.setNum(2);
 			this.checar(this.bComponente2);
 		}else if(e.getSource()==this.bComponente3){
+			pc.setNum(3);
 			this.checar(this.bComponente3);
 		}else if(e.getSource()==this.bComponente4){
+			pc.setNum(4);
 			this.checar(this.bComponente4);
 		}else if(e.getSource()==this.bComponente5){
+			pc.setNum(5);
 			this.checar(this.bComponente5);
 		}else if(e.getSource()==this.bComponente6){
+			pc.setNum(6);
 			this.checar(this.bComponente6);
+		}
+
+
+		if(e.getSource()==bComponente1||e.getSource()==bComponente2||e.getSource()==bComponente6){
+			if(this.componente=="resistencia"){
+				pc.setComponente("resistencia");
+				//System.out.println("num r1: "+pc.getContadorR1());
+				pc.addArray();
+
+
+			}else if(this.componente=="voltaje"){
+				pc.setComponente("voltaje");
+				//System.out.println("num v1: "+pc.getContadorV1());
+				pc.addArray();
+
+			}else if(this.componente=="conductor"){
+				pc.setComponente("conductor");
+			}else{
+				System.out.println("no hay boton presionado 1");
+			}
+		}
+
+		else if(e.getSource()==bComponente3||e.getSource()==bComponente4||e.getSource()==bComponente5){
+			if(this.componente=="resistencia"){
+				pc.setComponente("resistencia");
+				//System.out.println("num r2: "+pc.getContadorR2());
+				pc.addArray();
+
+			}else if(this.componente=="voltaje"){
+				pc.setComponente("voltaje");
+				//System.out.println("num v2: "+pc.getContadorV2());
+				pc.addArray();
+
+			}else if(this.componente=="conductor"){
+				pc.setComponente("conductor");
+			}else{
+				System.out.println("no hay boton presionado 2");
+			}
 		}
 	}
 
-	//Checks which component has to draw
-	public void checar(JButton boton){
-		if(componente=="resistencia"){
-			boton.setIcon(iR);
-		}else if(componente=="capacitor"){
-			boton.setIcon(iC);
-		}else if(componente=="conductor"){
-			boton.setIcon(iCo);
-		}else if(componente=="voltaje"){
-			boton.setIcon(iV);
-		}
+
+//Checks which component has to draw
+public void checar(JButton boton){
+	if(componente=="resistencia"){
+		boton.setIcon(iR);
+	}else if(componente=="capacitor"){
+		boton.setIcon(iC);
+	}else if(componente=="conductor"){
+		boton.setIcon(iCo);
+	}else if(componente=="voltaje"){
+		boton.setIcon(iV);
 	}
+}
 }
