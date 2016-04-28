@@ -42,13 +42,13 @@ public class PanelResultados extends JPanel {
 		super.paintComponent(g);
 		if (getIsPainted()) {
 			paintTexto(g);
-			this.repaint();
 		}
 		this.isPainted = false;
 	}
 	
 	public void paintTexto(Graphics g) {
-		g.drawString("HOLA", 100, 100);
+		g.setColor(Color.BLACK);
+		g.drawLine(60, 60, 160, 60);
 		System.out.println("hola");
 	}
 	

@@ -132,13 +132,13 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	//Adds the resistances and voltages into the array
 	public void agregaPanel(){
-		System.out.println("contador res1: "+this.contador1);
+		/*System.out.println("contador res1: "+this.contador1);
 		System.out.println("contador res2: "+this.contador2);
 		System.out.println("contador vol1: "+this.contadorV1);
-		System.out.println("contador vol2 "+this.contadorV2);
+		System.out.println("contador vol2 "+this.contadorV2);*/
 
 		this.contadorT=this.contador1+this.contador2+this.contadorV1+this.contadorV2;
-		System.out.println("contador total: "+this.contadorT+"\n");
+		//System.out.println("contador total: "+this.contadorT+"\n");
 
 		if(this.contadorT<7){
 			for(int i=0;i<this.contador1;i++){
@@ -171,6 +171,7 @@ public class PanelControles extends JPanel implements ActionListener{
 		if(e.getSource()==this.bResultado1){
 			this.agregaPanel();
 			this.pr.setPaint(true);
+			this.pr.repaint();
 
 			//Sums values of the res array
 			this.sumaResistencia1=0;
