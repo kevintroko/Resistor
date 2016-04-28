@@ -563,8 +563,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				this.lComponente6.setText("Voltaje 6");
 			}
 		}
-<<<<<<< HEAD
-=======
+
 	}
 	
 	public void multiplicaI(){
@@ -597,6 +596,5 @@ public class PanelControles extends JPanel implements ActionListener{
 		}else cable6=componente6;
 		
 		pr.setCables(cable1, cable2, cable3, cable4, cable5, cable6);
->>>>>>> origin/master
 	}
 }
