@@ -34,21 +34,19 @@ public class PanelResultados extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(ecuación.geti1());
-		System.out.println(ecuación.geti2());
 	}
 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		if (getIsPainted()) {
 			paintTexto(g);
-			this.repaint();
 		}
 		this.isPainted = false;
 	}
 	
 	public void paintTexto(Graphics g) {
-		g.drawString("HOLA", 100, 100);
+		g.setColor(Color.BLACK);
+		g.drawLine(60, 60, 160, 60);
 		System.out.println("hola");
 	}
 	

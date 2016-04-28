@@ -49,18 +49,6 @@ public class MainProyecto extends JFrame{
 		this.setLocation(50, 0);
 		this.pack();
 		this.setVisible(true);
-<<<<<<< HEAD
-=======
-
-		GaussJordan ecuación = new GaussJordan();
-
-		try {
-			ecuación.matrices(new FileReader("in1."), new FileWriter("outfile"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
->>>>>>> origin/master
 	}
 
 

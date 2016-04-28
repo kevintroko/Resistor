@@ -27,17 +27,9 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	//Buttons
 	private JButton bResultado1;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-	private GaussJordan gauss = new GaussJordan();
 	private PanelResultados pr = new PanelResultados();
 
-<<<<<<< HEAD
-=======
 	
->>>>>>> origin/master
 	//Resistances array and voltages
 	private Resistencia[] arrRes1=new Resistencia[3];
 	private Resistencia[] arrRes2=new Resistencia[3];
@@ -139,13 +131,13 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	//Adds the resistances and voltages into the array
 	public void agregaPanel(){
-		System.out.println("contador res1: "+this.contador1);
+		/*System.out.println("contador res1: "+this.contador1);
 		System.out.println("contador res2: "+this.contador2);
 		System.out.println("contador vol1: "+this.contadorV1);
-		System.out.println("contador vol2 "+this.contadorV2);
+		System.out.println("contador vol2 "+this.contadorV2);*/
 
 		this.contadorT=this.contador1+this.contador2+this.contadorV1+this.contadorV2;
-		System.out.println("contador total: "+this.contadorT+"\n");
+		//System.out.println("contador total: "+this.contadorT+"\n");
 
 		if(this.contadorT<7){
 			for(int i=0;i<this.contador1;i++){
@@ -178,6 +170,7 @@ public class PanelControles extends JPanel implements ActionListener{
 		if(e.getSource()==this.bResultado1){
 			this.agregaPanel();
 			this.pr.setPaint(true);
+			this.pr.repaint();
 
 			//Sums values of the res array
 			this.sumaResistencia1=0;
@@ -265,24 +258,13 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
 		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
-<<<<<<< HEAD
-=======
 
-		gauss.matrices(new FileReader("in1."), new FileWriter("outfile"));
->>>>>>> origin/master
-		//
+
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
 	}
 	
 	public void obtenerI(){
-<<<<<<< HEAD
 		System.out.println("i1: "+gj.geti1());
-		System.out.println("12: "+gj.geti2());
+		System.out.println("12:"+gj.geti2());
 	}
-=======
-		System.out.println(gj.geti1());
-		System.out.println(gj.geti2());
-	}
-
->>>>>>> origin/master
 }
