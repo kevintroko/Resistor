@@ -71,9 +71,9 @@ class GaussJordan{
 
 			for (int i = 0; i < 20; i++) {
 				sCurrentLine = br.readLine();
-				if (i == 11) {
+				if (i == 15) {
 					valor_i1 = sCurrentLine;
-				}if(i == 12){
+				}if(i == 16){
 					valor_i2 = sCurrentLine;
 				}
 			}
@@ -101,8 +101,6 @@ class GaussJordan{
 		i2 = Double.parseDouble(valor_i2);
 
 
-		//System.out.println("valor i1 es:"+valor_i1);
-		//System.out.println("valor i2 es: "+valor_i2);
 	}
 
 	// main()
@@ -187,9 +185,13 @@ class GaussJordan{
 	}
 	
 	public double geti1(){
+		System.out.println("valor i1 es:"+this.i1);
+
 		return this.i1;
 	}
 	public double geti2(){
+		System.out.println("valor i2 es: "+this.i2);
+
 		return this.i2;
 	}
 }

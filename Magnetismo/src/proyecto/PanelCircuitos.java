@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PanelCircuitos extends JPanel implements ActionListener{
+	
 	private ImageIcon resistenciaIMG,
 	conductorIMG,
 	voltajeIMG;
@@ -29,15 +30,17 @@ public class PanelCircuitos extends JPanel implements ActionListener{
 	voltaje;
 
 	private PanelMalla pm;
+	private PanelResultados pr;
 
-	public PanelCircuitos(PanelMalla pm) {
+	public PanelCircuitos(PanelMalla pm, PanelResultados pr) {
 		super();
 		this.setLayout(null);
 		this.setPreferredSize(new Dimension(1080,160));
 		this.setBackground(new Color(183,183,183));
 
 		//Receive a panel
-		this.pm=pm;
+		this.pm = pm;
+		this.pr = pr;
 		this.resistenciaIMG = new ImageIcon(getClass().getResource("resistencia.png"));
 		this.conductorIMG =new ImageIcon(getClass().getResource("conductor.png"));
 		this.voltajeIMG = new ImageIcon(getClass().getResource("voltaje.png"));
@@ -75,12 +78,18 @@ public class PanelCircuitos extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.resistencia){
 			pm.cambiarComponente("resistencia");
+			pr.setImage(resistenciaIMG);
+			pr.repaint();
 
 		}else if(e.getSource()==this.voltaje){
 			pm.cambiarComponente("voltaje");
+			pr.setImage(voltajeIMG);
+			pr.repaint();
 
 		}else if(e.getSource()==this.conductor){
-			pm.cambiarComponente("conductor");	
+			pm.cambiarComponente("conductor");
+			pr.setImage(conductorIMG);
+			pr.repaint();
 		}
 	}
 }

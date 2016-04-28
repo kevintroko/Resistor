@@ -16,7 +16,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -30,15 +29,13 @@ public class PanelMalla extends JPanel implements ActionListener{
 	bComponente6;
 
 	private PanelControles pc;
+	private PanelResultados pr;
 	private String componente;
 
-	ImageIcon iC;
-	ImageIcon iCo;
-	ImageIcon iV;
-	ImageIcon iR;
+	private ImageIcon iCo,iV,iR;
 
 	//Main Constructor
-	public PanelMalla(PanelControles pc)  {
+	public PanelMalla(PanelControles pc, PanelResultados pr)  {
 		super();
 		this.setLayout(null);
 		this.setPreferredSize(new Dimension(440,680));
@@ -46,37 +43,33 @@ public class PanelMalla extends JPanel implements ActionListener{
 
 		//Instantiation
 		this.pc=pc;
-		this.iC=new ImageIcon(getClass().getResource("capacitor.png"));
+		this.pr = pr;
 		this.iCo=new ImageIcon(getClass().getResource("conductor.png"));
 		this.iV=new ImageIcon(getClass().getResource("voltaje.png"));
 		this.iR=new ImageIcon(getClass().getResource("resistencia.png"));
 
 		//Change size: Resistor Image  
 		Image img = iR.getImage() ;  
-		Image newimg = img.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		Image newimg = img.getScaledInstance( 70, 60,  java.awt.Image.SCALE_SMOOTH ) ;  
 		iR = new ImageIcon( newimg );
-
-		//Change size: Capacitor Image
-		Image img2 = iC.getImage() ;  
-		Image newimg2 = img2.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
-		iC = new ImageIcon( newimg2 );
 
 		//Change size: conductor Image  
 		Image img3 = iCo.getImage() ;  
-		Image newimg3 = img3.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		Image newimg3 = img3.getScaledInstance( 70, 60,  java.awt.Image.SCALE_SMOOTH ) ;  
 		iCo = new ImageIcon( newimg3 );
 
 		//Change size: voltage Image
 		Image img4 = iV.getImage() ;  
-		Image newimg4 = img4.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
+		Image newimg4 = img4.getScaledInstance( 70, 60,  java.awt.Image.SCALE_SMOOTH ) ;  
 		iV = new ImageIcon( newimg4 );
+		
 
-		this.bComponente1=new JButton("Comp.1");
-		this.bComponente2=new JButton("Comp.2");
-		this.bComponente3=new JButton("Comp.3");
-		this.bComponente4=new JButton("Comp.4");
-		this.bComponente5=new JButton("Comp.5");
-		this.bComponente6=new JButton("Comp.6");
+		this.bComponente1=new JButton();
+		this.bComponente2=new JButton();
+		this.bComponente3=new JButton();
+		this.bComponente4=new JButton();
+		this.bComponente5=new JButton();
+		this.bComponente6=new JButton();
 
 		//Adding components
 		this.add(bComponente1);
@@ -114,25 +107,19 @@ public class PanelMalla extends JPanel implements ActionListener{
 		
 		g.setColor(Color.BLACK);
 		g.drawLine(60, 60, 180, 60);
-		//g.drawRect(160, 20, 100, 80);
 
 		g.drawLine(260, 60, 380, 60);
 		g.drawLine(380, 60, 380, 150);
-		//g.drawRect(320, 140, 100, 80);
 
 		g.drawLine(380, 210, 380, 310);
-		//g.drawRect(320, 300, 100, 80);
 
 		g.drawLine(380, 370, 380, 460);
 		g.drawLine(380, 460, 260, 460);
-		//g.drawRect(160, 420, 100, 80);
 
 		g.drawLine(180, 460, 60, 460);
 		g.drawLine(60, 460, 60, 370);
-		//g.drawRect(20, 300, 100, 80);
 
 		g.drawLine(60, 310, 60, 210);
-		//g.drawRect(20, 140, 100, 80);
 		g.drawLine(60, 60, 60, 150);
 
 		g.drawLine(60, 260, 160, 260);
@@ -157,65 +144,96 @@ public class PanelMalla extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e){
-		if(pc.getContadorTotal()<6){
-			//Adds numbers to the sum in the panel controls
-			if(e.getSource()==bComponente1||e.getSource()==bComponente2||e.getSource()==bComponente6){
-				
-				if(this.componente=="resistencia"){
-					pc.setContadorR1();
-					//System.out.println("num r1: "+pc.getContadorR1());
-					pc.agregaPanel();
+		//Draws Button
+		if(e.getSource() == this.bComponente1){
+			pc.setNum(1);
+			this.checar(this.bComponente1);
+		}else if(e.getSource()==this.bComponente2){
+			pc.setNum(2);
+			this.checar(this.bComponente2);
+		}else if(e.getSource()==this.bComponente3){
+			pc.setNum(3);
+			this.checar(this.bComponente3);
+		}else if(e.getSource()==this.bComponente4){
+			pc.setNum(4);
+			this.checar(this.bComponente4);
+		}else if(e.getSource()==this.bComponente5){
+			pc.setNum(5);
+			this.checar(this.bComponente5);
+		}else if(e.getSource()==this.bComponente6){
+			pc.setNum(6);
+			this.checar(this.bComponente6);
+		}
 
-				}else if(this.componente=="voltaje"){
-					pc.setContadorV1();
-					//System.out.println("num v1: "+pc.getContadorV1());
-					pc.agregaPanel();
-				}else if(this.componente=="conductor"){
-					pc.setContadorT();
-				}else if(this.componente=="capacitor"){
-					pc.setContadorT();
-				}else{
-					System.out.println("no hay boton presionado");
-				}
+
+		if(e.getSource()==bComponente1||e.getSource()==bComponente2||e.getSource()==bComponente6){
+			if(this.componente=="resistencia"){
+				pc.setComponente("resistencia");
+				//System.out.println("num r1: "+pc.getContadorR1());
+				pc.addArray();
+
+
+			}else if(this.componente=="voltaje"){
+				pc.setComponente("voltaje");
+				//System.out.println("num v1: "+pc.getContadorV1());
+				pc.addArray();
+
+			}else if(this.componente=="conductor"){
+				pc.setComponente("conductor");
+			}else{
+				System.out.println("no hay boton presionado 1");
 			}
+		}
 
-			else if(e.getSource()==bComponente3||e.getSource()==bComponente4||e.getSource()==bComponente5){
-				if(this.componente=="resistencia"){
-					//System.out.println(this.componente);
-					pc.setContadorR2();
-					//System.out.println("num r2: "+pc.getContadorR2());
-					pc.agregaPanel();
+		else if(e.getSource()==bComponente3||e.getSource()==bComponente4||e.getSource()==bComponente5){
+			if(this.componente=="resistencia"){
+				pc.setComponente("resistencia");
+				//System.out.println("num r2: "+pc.getContadorR2());
+				pc.addArray();
 
-				}else if(this.componente=="voltaje"){
-					pc.setContadorV2();
-					//System.out.println("num v2: "+pc.getContadorV2());
-					pc.agregaPanel();
+			}else if(this.componente=="voltaje"){
+				pc.setComponente("voltaje");
+				//System.out.println("num v2: "+pc.getContadorV2());
+				pc.addArray();
 
-				}else if(this.componente=="conductor"){
-					pc.setContadorT();
-				}else if(this.componente=="capacitor"){
-					pc.setContadorT();
-				}else{
-					System.out.println("no hay boton presionado");
-				}
+			}else if(this.componente=="conductor"){
+				pc.setComponente("conductor");
+			}else{
+				System.out.println("no hay boton presionado 2");
 			}
-		}else{
-			JOptionPane.showMessageDialog(this, "Limit reached");
 		}
 
 		//Draws Button
 		if(e.getSource() == this.bComponente1){
 			this.checar(this.bComponente1);
+			pr.setComponent("Componente1");
+			pr.setImagenAr(pr.getImage(), 0);
+			pr.repaint();
 		}else if(e.getSource()==this.bComponente2){
 			this.checar(this.bComponente2);
+			pr.setComponent("Componente2");
+			pr.setImagenAr(pr.getImage(), 1);
+			pr.repaint();
 		}else if(e.getSource()==this.bComponente3){
 			this.checar(this.bComponente3);
+			pr.setComponent("Componente3");
+			pr.setImagenAr(pr.getImage(), 2);
+			pr.repaint();
 		}else if(e.getSource()==this.bComponente4){
 			this.checar(this.bComponente4);
+			pr.setComponent("Componente4");
+			pr.setImagenAr(pr.getImage(), 3);
+			pr.repaint();
 		}else if(e.getSource()==this.bComponente5){
 			this.checar(this.bComponente5);
+			pr.setComponent("Componente5");
+			pr.setImagenAr(pr.getImage(), 4);
+			pr.repaint();
 		}else if(e.getSource()==this.bComponente6){
 			this.checar(this.bComponente6);
+			pr.setComponent("Componente6");
+			pr.setImagenAr(pr.getImage(), 5);
+			pr.repaint();
 		}
 	}
 
@@ -223,12 +241,11 @@ public class PanelMalla extends JPanel implements ActionListener{
 	public void checar(JButton boton){
 		if(componente=="resistencia"){
 			boton.setIcon(iR);
-		}else if(componente=="capacitor"){
-			boton.setIcon(iC);
 		}else if(componente=="conductor"){
 			boton.setIcon(iCo);
 		}else if(componente=="voltaje"){
 			boton.setIcon(iV);
 		}
 	}
+
 }

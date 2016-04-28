@@ -10,9 +10,8 @@ package proyecto;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -25,6 +24,9 @@ public class PanelResultados extends JPanel {
 	
 	//Boolean to enable the paintComponent() in panelResultados
 	private boolean isPainted = false;
+	private ImageIcon image;
+	private ImageIcon[] imagenes = new ImageIcon[6];
+	private String componente;
 	
 	/**
 	 * Class constructor
@@ -44,9 +46,8 @@ public class PanelResultados extends JPanel {
 	 * @param g
 	 */
 	public void paintComponent(Graphics g){
-		super.paintComponent(g);
 		if (getIsPainted()) {
-			paintTexto(g);
+			paintCircuit(g);
 		}
 		this.isPainted = false;
 	}
@@ -56,40 +57,50 @@ public class PanelResultados extends JPanel {
 	 * with identifier colors that represents the size of the charge.
 	 * @param g
 	 */
-	public void paintTexto(Graphics g) {
+	public void paintCircuit(Graphics g) {
 		
+		int x = 160;
+		int y = 260;
+		g.drawLine(x, y, x+10, y-20);
+		g.drawLine(x+10,y-20,x+30,y+20);
+		g.drawLine(x+30,y+20,x+50,y-20);
+		g.drawLine(x+50,y-20,x+70,y+20);
+		g.drawLine(x+70,y+20,x+90,y-20);
+		g.drawLine(x+90,y-20,x+110,y+20);
+		g.drawLine(x+110,y+20,x+120,y);
 		
 		g.setColor(getColor(40));
 		g.drawLine(60, 60, 160, 60);
-		g.drawRect(160, 20, 100, 80);
+		g.drawLine(60, 60, 60, 140);
 		
-		g.setColor(getColor(40));
+		g.setColor(getColor(70));
 		g.drawLine(260, 60, 380, 60);
 		g.drawLine(380, 60, 380, 140);
-		g.drawRect(320, 140, 100, 80);
 
-		g.setColor(getColor(20));
+		g.setColor(getColor(120));
 		g.drawLine(380, 220, 380, 300);
-		g.drawRect(320, 300, 100, 80);
 
 		g.setColor(getColor(30));
 		g.drawLine(380, 380, 380, 460);
 		g.drawLine(380, 460, 260, 460);
-		g.drawRect(160, 420, 100, 80);
 
-		g.setColor(getColor(40));
+		g.setColor(getColor(70));
 		g.drawLine(160, 460, 60, 460);
 		g.drawLine(60, 460, 60, 380);
-		g.drawRect(20, 300, 100, 80);
 		
-		g.setColor(getColor(90));
+		g.setColor(getColor(120));
 		g.drawLine(60, 300, 60, 220);
-		g.drawRect(20, 140, 100, 80);
-		g.drawLine(60, 60, 60, 140);
-		
-		g.setColor(getColor(150));
 		g.drawLine(60, 260, 160, 260);
+
 		g.drawLine(280, 260, 380, 260);
+		
+		g.drawImage(getImageAr(0).getImage(), 180, 30, 80, 60, null);
+		g.drawImage(getImageAr(1).getImage(), 350, 150, 80, 60, null);
+		g.drawImage(getImageAr(2).getImage(), 350, 310, 80, 60, null);
+		g.drawImage(getImageAr(3).getImage(), 180, 430, 80, 60, null);
+		g.drawImage(getImageAr(4).getImage(), 25, 310, 80, 60, null);
+		g.drawImage(getImageAr(5).getImage(), 25, 150, 80, 60, null);
+	
 	}
 	
 	/**
@@ -105,6 +116,26 @@ public class PanelResultados extends JPanel {
 	 */
 	public boolean getIsPainted() {
 		return this.isPainted;
+	}
+	public void setImage(ImageIcon image){
+		this.image = image;
+	}
+	public ImageIcon getImage(){
+		return this.image;
+	}
+	public void setComponent(String componente){
+		this.componente = componente;
+	}
+	public String getComponent(){
+		return this.componente;
+	}
+	
+	public void setImagenAr(ImageIcon image, int i){
+		this.imagenes[i] = image;
+	}
+	
+	public ImageIcon getImageAr(int i){
+		return this.imagenes[i];
 	}
 	
 	/**
