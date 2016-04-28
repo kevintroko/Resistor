@@ -563,6 +563,10 @@ public class PanelControles extends JPanel implements ActionListener{
 				this.lComponente6.setText("Voltaje 6");
 			}
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 	}
 	
 	public void multiplicaI(){

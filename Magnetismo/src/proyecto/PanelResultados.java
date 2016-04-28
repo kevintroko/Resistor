@@ -75,6 +75,7 @@ public class PanelResultados extends JPanel {
 	public void paintCircuit(Graphics g) {
 		int x = 160;
 		int y = 260;
+		
 		g.drawLine(x, y, x+10, y-20);
 		g.drawLine(x+10,y-20,x+30,y+20);
 		g.drawLine(x+30,y+20,x+50,y-20);
@@ -83,26 +84,26 @@ public class PanelResultados extends JPanel {
 		g.drawLine(x+90,y-20,x+110,y+20);
 		g.drawLine(x+110,y+20,x+120,y);
 
-		g.setColor(getColor(40));
+		g.setColor(getColor(this.cable1));
 		g.drawLine(60, 60, 160, 60);
 		g.drawLine(60, 60, 60, 140);
 
-		g.setColor(getColor(70));
+		g.setColor(getColor(this.cable2));
 		g.drawLine(260, 60, 380, 60);
 		g.drawLine(380, 60, 380, 140);
 
-		g.setColor(getColor(120));
+		g.setColor(getColor(this.cable3));
 		g.drawLine(380, 220, 380, 300);
 
-		g.setColor(getColor(30));
+		g.setColor(getColor(this.cable4));
 		g.drawLine(380, 380, 380, 460);
 		g.drawLine(380, 460, 260, 460);
 
-		g.setColor(getColor(70));
+		g.setColor(getColor(this.cable5));
 		g.drawLine(160, 460, 60, 460);
 		g.drawLine(60, 460, 60, 380);
 
-		g.setColor(getColor(120));
+		g.setColor(getColor(this.cable6));
 		g.drawLine(60, 300, 60, 220);
 		g.drawLine(60, 260, 160, 260);
 
@@ -159,7 +160,7 @@ public class PanelResultados extends JPanel {
 	 * @return color 
 	 * 				this color is assigned to the corresponding circuit section 
 	 */
-	public Color getColor(int corriente){
+	public Color getColor(double corriente){
 
 		Color color = Color.black;
 
