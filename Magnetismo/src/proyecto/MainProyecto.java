@@ -38,17 +38,15 @@ public class MainProyecto extends JFrame{
 		PanelControles pc = new PanelControles(pr, ecuacion);	
 		this.add(pc, BorderLayout.WEST);
 
-		PanelMalla pm = new PanelMalla(pc);
+		PanelMalla pm = new PanelMalla(pc, pr);
 		this.add(pm, BorderLayout.CENTER);	
 
-		PanelCircuitos pcr = new PanelCircuitos(pm);
+		PanelCircuitos pcr = new PanelCircuitos(pm, pr);
 		this.add(pcr, BorderLayout.SOUTH);
 
 		this.setLocation(50, 0);
 		this.pack();
 		this.setVisible(true);
-
-
 		GaussJordan ecuación = new GaussJordan();
 
 		try {

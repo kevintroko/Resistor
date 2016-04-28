@@ -296,6 +296,17 @@ public class PanelControles extends JPanel implements ActionListener{
 		else if(e.getSource()==bOk2){
 			if(this.componente!=null){
 				componente2= Double.parseDouble(tfComponente2.getText());
+<<<<<<< HEAD
+=======
+			}
+			//checks its positive
+			if(componente2<0){
+				if(componente=="resistencia"){
+					JOptionPane.showMessageDialog(null, "NO PUEDEN SER RESISTENCIAS NEGATIVAS");
+				}else{
+					JOptionPane.showMessageDialog(null, "NO PUEDEN SER VOLTAJES NEGATIVOS");
+				}
+>>>>>>> origin/master
 			}
 			//checks its positive
 			if(componente2<0){
@@ -310,6 +321,13 @@ public class PanelControles extends JPanel implements ActionListener{
 			System.out.println("El valor 2 es: "+componente2);
 			this.addArray();
 
+<<<<<<< HEAD
+=======
+			//prints value (Only for testing)
+			System.out.println("El valor 2 es: "+componente2);
+			this.addArray();
+
+>>>>>>> origin/master
 		}else if(e.getSource()==this.bOk3){
 			if(this.componente!=null){
 				componente3= Double.parseDouble(tfComponente3.getText());
@@ -339,11 +357,19 @@ public class PanelControles extends JPanel implements ActionListener{
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER VOLTAJES NEGATIVOS");
 				}
 			}
+<<<<<<< HEAD
 
 			//prints value (Only for testing)
 			System.out.println("El valor 4 es: "+componente4);
 			this.addArray();
 
+=======
+
+			//prints value (Only for testing)
+			System.out.println("El valor 4 es: "+componente4);
+			this.addArray();
+
+>>>>>>> origin/master
 		}else if(e.getSource()==this.bOk5){
 			if(this.componente!=null){
 				componente5= Double.parseDouble(tfComponente5.getText());
@@ -440,12 +466,18 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
 		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
+		gj.geti1();
+		gj.geti2();
 	}
 
 	public void setComponente(String componente){
 		this.componente=componente;
+<<<<<<< HEAD
 	}
 
 	public void setNum(int numero){
@@ -553,4 +585,111 @@ public class PanelControles extends JPanel implements ActionListener{
 	}
 }
 
+=======
+	}
 
+	public void setNum(int numero){
+		this.num=numero;
+	}
+>>>>>>> origin/master
+
+	public void addArray(){
+		if(this.componente=="resistencia"){
+			if(this.num==1){
+				try {
+					this.componente1=Double.parseDouble(this.tfComponente1.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente1.setText("Resistencia 1");
+			}else if(this.num==2){
+				try {
+					this.componente2=Double.parseDouble(this.tfComponente2.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente2.setText("Resistencia 2");
+			}else if(this.num==3){
+				try {
+					this.componente3=Double.parseDouble(this.tfComponente3.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente3.setText("Resistencia 3");
+			}else if(this.num==4){
+				try {
+					this.componente4=Double.parseDouble(this.tfComponente4.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente4.setText("Resistencia 4");
+			}else if(this.num==5){
+				try {
+					this.componente5=Double.parseDouble(this.tfComponente5.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente5.setText("Resistencia 5");
+			}else if(this.num==6){
+				try {
+					this.componente6=Double.parseDouble(this.tfComponente6.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente6.setText("Resistencia 6");
+			}
+		}else if(this.componente=="voltaje"){
+			if(this.num==1){
+				try {
+					System.out.println("soy un voltaje 2");
+					this.componentev1=Double.parseDouble(this.tfComponente1.getText());
+					System.out.println(this.componentev1);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente1.setText("Voltaje 1");;
+			}else if(this.num==2){
+				try {
+					this.componentev2=Double.parseDouble(this.tfComponente2.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente2.setText("Voltaje 2");
+			}else if(this.num==3){
+				try {
+					this.componentev3=Double.parseDouble(this.tfComponente3.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente3.setText("Voltaje 3");
+			}else if(this.num==4){
+				try {
+					this.componentev4=Double.parseDouble(this.tfComponente4.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente4.setText("Voltaje 4");
+			}else if(this.num==5){
+				try {
+					this.componentev5=Double.parseDouble(this.tfComponente5.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente5.setText("Voltaje 5");
+			}else if(this.num==6){
+				try {
+					this.componentev6=Double.parseDouble(this.tfComponente6.getText());					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				this.lComponente6.setText("Voltaje 6");
+			}
+		}
+		System.out.println("Componente 1:"+componente1);
+		System.out.println("Componente 2:"+componente2);
+		System.out.println("Componente 3:"+componente3);
+		System.out.println("Componente 4:"+componente4);
+		System.out.println("Componente 5:"+componente5);
+		System.out.println("Componente 6:"+componente6);
+	}
+}
