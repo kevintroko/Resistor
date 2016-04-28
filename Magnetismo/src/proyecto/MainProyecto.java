@@ -49,6 +49,8 @@ public class MainProyecto extends JFrame{
 		this.setLocation(50, 0);
 		this.pack();
 		this.setVisible(true);
+<<<<<<< HEAD
+=======
 
 		GaussJordan ecuación = new GaussJordan();
 
@@ -58,6 +60,7 @@ public class MainProyecto extends JFrame{
 			e.printStackTrace();
 		}
 
+>>>>>>> origin/master
 	}
 
 
