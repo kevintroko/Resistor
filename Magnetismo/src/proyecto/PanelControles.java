@@ -27,16 +27,16 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	//Buttons
 	private JButton bResultado1;
-
+	private boolean pinta;
 	private GaussJordan gauss = new GaussJordan();
-	
+
 	//Resistances array and voltages
 	private Resistencia[] arrRes1=new Resistencia[3];
 	private Resistencia[] arrRes2=new Resistencia[3];
 	private Voltaje[] arrVol1=new Voltaje[3];
 	private Voltaje[] arrVol2=new Voltaje[3];
-	
-	
+
+
 	private JTextField tresInicial;
 	private JButton bPonerRes;
 	private int sumaVoltaje1,
@@ -91,7 +91,7 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.voltaje6=new Voltaje();
 		this.tresInicial=new JTextField(6);
 		this.bPonerRes=new JButton("Ok");
-		
+
 		//Add components into the array
 		arrRes1[0]=this.panelRes;
 		arrRes1[1]=this.panelRes2;
@@ -159,7 +159,7 @@ public class PanelControles extends JPanel implements ActionListener{
 			this.revalidate();
 		}
 	}
-	
+
 	//Actions of the buttons
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -242,5 +242,11 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(this.sumaResistencia2+" "+resistenciaV+" "+this.sumaVoltaje2);
 		pw.close();	
 		gauss.matrices(new FileReader("in1."), new FileWriter("outfile"));
+		this.pinta = true;
 	}
+	
+	public boolean yaPinta(){
+		return this.pinta;
+	}
+
 }

@@ -137,7 +137,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 		g.drawLine(60, 260, 160, 260);
 		g.drawLine(280, 260, 380, 260);
 	}
-	
+
 	public void drawResistencia(Graphics g,int x, int y){
 		g.drawLine(x, y, x+10, y-20);
 		g.drawLine(x+10,y-20,x+30,y+20);
@@ -146,7 +146,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 		g.drawLine(x+70,y+20,x+90,y-20);
 		g.drawLine(x+90,y-20,x+110,y+20);
 		g.drawLine(x+110,y+20,x+120,y);
-		
+
 	}
 
 	public void cambiarComponente(String componente){
@@ -163,8 +163,8 @@ public class PanelMalla extends JPanel implements ActionListener{
 					pc.setContadorR1();
 					System.out.println("num r1: "+pc.getContadorR1());
 					pc.agregaPanel();
-					
-					
+
+
 				}else if(this.componente=="voltaje"){
 					pc.setContadorV1();
 					System.out.println("num v1: "+pc.getContadorV1());
@@ -177,19 +177,19 @@ public class PanelMalla extends JPanel implements ActionListener{
 					System.out.println("no hay boton presionado");
 				}
 			}
-			
+
 			else if(e.getSource()==bComponente3||e.getSource()==bComponente4||e.getSource()==bComponente5){
 				if(this.componente=="resistencia"){
 					System.out.println(this.componente);
 					pc.setContadorR2();
 					System.out.println("num r2: "+pc.getContadorR2());
 					pc.agregaPanel();
-					
+
 				}else if(this.componente=="voltaje"){
 					pc.setContadorV2();
 					System.out.println("num v2: "+pc.getContadorV2());
 					pc.agregaPanel();
-					
+
 				}else if(this.componente=="conductor"){
 					pc.setContadorT();
 				}else if(this.componente=="capacitor"){
