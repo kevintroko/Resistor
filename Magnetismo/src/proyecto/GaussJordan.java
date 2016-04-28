@@ -87,21 +87,21 @@ class GaussJordan{
 				ex.printStackTrace();
 			}
 		}
-			System.out.println("renglon i1: " + valor_i1);
-			StringTokenizer string = new StringTokenizer(valor_i1);
-			while(string.hasMoreTokens()){
+		System.out.println("renglon i1: " + valor_i1);
+		StringTokenizer string = new StringTokenizer(valor_i1);
+		while(string.hasMoreTokens()){
 
-				valor_i1 = string.nextToken(" ");
-			}
-			System.out.println("renglon i2: " + valor_i2);
-			StringTokenizer string2 = new StringTokenizer(valor_i2);
-			while(string2.hasMoreTokens()){
+			valor_i1 = string.nextToken(" ");
+		}
+		System.out.println("renglon i2: " + valor_i2);
+		StringTokenizer string2 = new StringTokenizer(valor_i2);
+		while(string2.hasMoreTokens()){
 
-				valor_i2 = string2.nextToken(" ");
-			}
-			i1 = Double.parseDouble(valor_i1);
-			i2 = Double.parseDouble(valor_i2);
-		
+			valor_i2 = string2.nextToken(" ");
+		}
+		i1 = Double.parseDouble(valor_i1);
+		i2 = Double.parseDouble(valor_i2);
+
 
 		//System.out.println("valor i1 es:"+valor_i1);
 		//System.out.println("valor i2 es: "+valor_i2);
