@@ -20,7 +20,6 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PanelMalla extends JPanel implements ActionListener{
-
 	//Declaration 
 	private JButton bComponente1,
 	bComponente2,
@@ -105,7 +104,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 
 	//Draws the initial circuit
 	public void dibujaMalla(Graphics g){
-
+		
 		g.setColor(Color.BLACK);
 		g.drawLine(60, 60, 180, 60);
 
@@ -145,8 +144,6 @@ public class PanelMalla extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e){
-<<<<<<< HEAD
-=======
 		//Draws Button
 		if(e.getSource() == this.bComponente1){
 			pc.setNum(1);
@@ -206,66 +203,40 @@ public class PanelMalla extends JPanel implements ActionListener{
 			}
 		}
 
->>>>>>> origin/master
 		//Draws Button
 		if(e.getSource() == this.bComponente1){
-			pc.setNum(1);
 			this.checar(this.bComponente1);
 			pr.setComponent("Componente1");
 			pr.setImagenAr(pr.getImage(), 0);
 			pr.repaint();
 		}else if(e.getSource()==this.bComponente2){
-			pc.setNum(2);
 			this.checar(this.bComponente2);
 			pr.setComponent("Componente2");
 			pr.setImagenAr(pr.getImage(), 1);
 			pr.repaint();
 		}else if(e.getSource()==this.bComponente3){
-			pc.setNum(3);
 			this.checar(this.bComponente3);
 			pr.setComponent("Componente3");
 			pr.setImagenAr(pr.getImage(), 2);
 			pr.repaint();
 		}else if(e.getSource()==this.bComponente4){
-			pc.setNum(4);
 			this.checar(this.bComponente4);
 			pr.setComponent("Componente4");
 			pr.setImagenAr(pr.getImage(), 3);
 			pr.repaint();
 		}else if(e.getSource()==this.bComponente5){
-			pc.setNum(5);
 			this.checar(this.bComponente5);
 			pr.setComponent("Componente5");
 			pr.setImagenAr(pr.getImage(), 4);
 			pr.repaint();
 		}else if(e.getSource()==this.bComponente6){
-			pc.setNum(6);
 			this.checar(this.bComponente6);
 			pr.setComponent("Componente6");
 			pr.setImagenAr(pr.getImage(), 5);
 			pr.repaint();
 		}
+	}
 
-<<<<<<< HEAD
-
-		if(e.getSource()==bComponente1||e.getSource()==bComponente2||e.getSource()==bComponente6){
-			if(this.componente=="resistencia"){
-				pc.setComponente("resistencia");
-				//System.out.println("num r1: "+pc.getContadorR1());
-				pc.addArray();
-
-
-			}else if(this.componente=="voltaje"){
-				pc.setComponente("voltaje");
-				//System.out.println("num v1: "+pc.getContadorV1());
-				pc.addArray();
-
-			}else if(this.componente=="conductor"){
-				pc.setComponente("conductor");
-			}else{
-				System.out.println("no hay boton presionado 1");
-			}
-=======
 	//Checks which component has to draw
 	public void checar(JButton boton){
 		if(componente=="resistencia"){
@@ -274,43 +245,7 @@ public class PanelMalla extends JPanel implements ActionListener{
 			boton.setIcon(iCo);
 		}else if(componente=="voltaje"){
 			boton.setIcon(iV);
->>>>>>> origin/master
-		}
-
-		else if(e.getSource()==bComponente3||e.getSource()==bComponente4||e.getSource()==bComponente5){
-			if(this.componente=="resistencia"){
-				pc.setComponente("resistencia");
-				//System.out.println("num r2: "+pc.getContadorR2());
-				pc.addArray();
-
-			}else if(this.componente=="voltaje"){
-				pc.setComponente("voltaje");
-				//System.out.println("num v2: "+pc.getContadorV2());
-				pc.addArray();
-
-			}else if(this.componente=="conductor"){
-				pc.setComponente("conductor");
-			}else{
-				System.out.println("no hay boton presionado 2");
-			}
 		}
 	}
 
-
-//Checks which component has to draw
-public void checar(JButton boton){
-	if(componente=="resistencia"){
-		boton.setIcon(iR);
-	}else if(componente=="capacitor"){
-		boton.setIcon(iC);
-	}else if(componente=="conductor"){
-		boton.setIcon(iCo);
-	}else if(componente=="voltaje"){
-		boton.setIcon(iV);
-	}
-<<<<<<< HEAD
-}
-=======
-
->>>>>>> origin/master
 }

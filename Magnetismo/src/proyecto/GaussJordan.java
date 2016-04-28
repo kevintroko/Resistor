@@ -173,15 +173,12 @@ class GaussJordan{
 			j++;
 		}
 
-
 		// print rank to output file
 		out.println("rank = " + (i-1));
-
 
 		// close output file
 		out.close();
 		leeMatrix();
-
 	}
 	
 	public double geti1(){
