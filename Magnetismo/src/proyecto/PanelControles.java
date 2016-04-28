@@ -142,8 +142,9 @@ public class PanelControles extends JPanel implements ActionListener{
 		if(this.contadorT<7){
 			for(int i=0;i<this.contador1;i++){
 				this.add(this.arrRes1[i]);
-				//System.out.println("resitencia[i]: "+i);
+				System.out.println("resitencia["+i+"]");
 			}
+			System.out.println("\n");
 
 			for(int i=0;i<this.contador2;i++){
 				this.add(this.arrRes2[i]);
@@ -227,21 +228,17 @@ public class PanelControles extends JPanel implements ActionListener{
 	public int getContadorR2(){
 		return this.contador2;
 	}
-
 	public int getContadorV1(){
 		return this.contadorV1;
 	}
 	public int getContadorV2() {
 		return this.contadorV2;
 	}
-
 	public int getContadorTotal(){
 		return this.contadorT;
 	}
-	
 	public JButton getBoton(){
 		return this.bResultado1;
-		
 	}
 
 	public void formula() throws IOException{
@@ -258,7 +255,6 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
 		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
-
 
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
 	}

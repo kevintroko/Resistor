@@ -26,12 +26,27 @@ public class Resistencia extends JPanel implements ActionListener {
 	private JLabel lLabel;
 	private JTextField tTexto;
 	private Font fuente;
+	
+	double cable1,
+	cable2,
+	cable3,
+	cable4,
+	cable5,
+	cable6;
+	
 
+	public void setValorCable(Double valor){
+		this.cable1=valor;
+	}
+	
 	public Resistencia(){
 		super();
 		this.setPreferredSize(new Dimension(190,70));
 		((FlowLayout)this.getLayout()).setAlignment(FlowLayout.LEFT);
-
+		
+		
+		
+		
 		//Instantiate components
 		this.bOk=new JButton("Ok");
 		this.bReset= new JButton("Reset");
@@ -62,7 +77,7 @@ public class Resistencia extends JPanel implements ActionListener {
 				this.valor=0;
 			}
 			//prints value (Only for testing)
-			//System.out.println("El valor es: "+this.valor);
+			System.out.println("El valor es: "+this.valor);
 
 		}else if(e.getSource()==this.bReset){
 			this.valor=0;
