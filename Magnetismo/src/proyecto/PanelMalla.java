@@ -71,12 +71,12 @@ public class PanelMalla extends JPanel implements ActionListener{
 		Image newimg4 = img4.getScaledInstance( 100, 80,  java.awt.Image.SCALE_SMOOTH ) ;  
 		iV = new ImageIcon( newimg4 );
 
-		this.bComponente1=new JButton("Componente1");
-		this.bComponente2=new JButton("Componente2");
-		this.bComponente3=new JButton("Componente3");
-		this.bComponente4=new JButton("Componente4");
-		this.bComponente5=new JButton("Componente5");
-		this.bComponente6=new JButton("Componente6");
+		this.bComponente1=new JButton("Comp.1");
+		this.bComponente2=new JButton("Comp.2");
+		this.bComponente3=new JButton("Comp.3");
+		this.bComponente4=new JButton("Comp.4");
+		this.bComponente5=new JButton("Comp.5");
+		this.bComponente6=new JButton("Comp.6");
 
 		//Adding components
 		this.add(bComponente1);
@@ -94,12 +94,12 @@ public class PanelMalla extends JPanel implements ActionListener{
 		this.bComponente5.addActionListener(this);
 		this.bComponente6.addActionListener(this);
 
-		this.bComponente1.setBounds(160, 20, 100, 80);
-		this.bComponente2.setBounds(320, 140, 100, 80);
-		this.bComponente3.setBounds(320, 300, 100, 80);
-		this.bComponente4.setBounds(160, 420, 100, 80);
-		this.bComponente5.setBounds(20, 300, 100, 80);
-		this.bComponente6.setBounds(20, 140, 100, 80);
+		this.bComponente1.setBounds(180, 30, 80, 60);
+		this.bComponente2.setBounds(350, 150, 80, 60);
+		this.bComponente3.setBounds(350, 310, 80, 60);
+		this.bComponente4.setBounds(180, 430, 80, 60);
+		this.bComponente5.setBounds(25, 310, 80, 60);
+		this.bComponente6.setBounds(25, 150, 80, 60);
 	}
 
 	//Method with all the Graphics functions
@@ -111,28 +111,29 @@ public class PanelMalla extends JPanel implements ActionListener{
 
 	//Draws the initial circuit
 	public void dibujaMalla(Graphics g){
+		
 		g.setColor(Color.BLACK);
-		g.drawLine(60, 60, 160, 60);
-		g.drawRect(160, 20, 100, 80);
+		g.drawLine(60, 60, 180, 60);
+		//g.drawRect(160, 20, 100, 80);
 
 		g.drawLine(260, 60, 380, 60);
-		g.drawLine(380, 60, 380, 140);
-		g.drawRect(320, 140, 100, 80);
+		g.drawLine(380, 60, 380, 150);
+		//g.drawRect(320, 140, 100, 80);
 
-		g.drawLine(380, 220, 380, 300);
-		g.drawRect(320, 300, 100, 80);
+		g.drawLine(380, 210, 380, 310);
+		//g.drawRect(320, 300, 100, 80);
 
-		g.drawLine(380, 380, 380, 460);
+		g.drawLine(380, 370, 380, 460);
 		g.drawLine(380, 460, 260, 460);
-		g.drawRect(160, 420, 100, 80);
+		//g.drawRect(160, 420, 100, 80);
 
-		g.drawLine(160, 460, 60, 460);
-		g.drawLine(60, 460, 60, 380);
-		g.drawRect(20, 300, 100, 80);
+		g.drawLine(180, 460, 60, 460);
+		g.drawLine(60, 460, 60, 370);
+		//g.drawRect(20, 300, 100, 80);
 
-		g.drawLine(60, 300, 60, 220);
-		g.drawRect(20, 140, 100, 80);
-		g.drawLine(60, 60, 60, 140);
+		g.drawLine(60, 310, 60, 210);
+		//g.drawRect(20, 140, 100, 80);
+		g.drawLine(60, 60, 60, 150);
 
 		g.drawLine(60, 260, 160, 260);
 		g.drawLine(280, 260, 380, 260);
@@ -159,11 +160,11 @@ public class PanelMalla extends JPanel implements ActionListener{
 		if(pc.getContadorTotal()<6){
 			//Adds numbers to the sum in the panel controls
 			if(e.getSource()==bComponente1||e.getSource()==bComponente2||e.getSource()==bComponente6){
+				
 				if(this.componente=="resistencia"){
 					pc.setContadorR1();
 					//System.out.println("num r1: "+pc.getContadorR1());
 					pc.agregaPanel();
-
 
 				}else if(this.componente=="voltaje"){
 					pc.setContadorV1();

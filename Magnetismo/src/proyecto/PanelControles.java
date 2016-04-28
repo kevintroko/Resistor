@@ -200,7 +200,6 @@ public class PanelControles extends JPanel implements ActionListener{
 				e1.printStackTrace();
 			}
 			this.obtenerI();
-			this.pr.pintaBonito = true;
 		}
 	}
 
@@ -260,16 +259,13 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
 
-
 		gauss.matrices(new FileReader("in1."), new FileWriter("outfile"));
-		//
-
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
 	}
 
 	public void obtenerI(){
-		System.out.println("i1: "+gj.geti1());
-		System.out.println("12:"+gj.geti2());
+//		System.out.println("i1: "+gj.geti1());
+//		System.out.println("12:"+gj.geti2());
 	}
 
 }

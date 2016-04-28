@@ -87,13 +87,11 @@ class GaussJordan{
 				ex.printStackTrace();
 			}
 		}
-		System.out.println("renglon i1: " + valor_i1);
 		StringTokenizer string = new StringTokenizer(valor_i1);
 		while(string.hasMoreTokens()){
 
 			valor_i1 = string.nextToken(" ");
 		}
-		System.out.println("renglon i2: " + valor_i2);
 		StringTokenizer string2 = new StringTokenizer(valor_i2);
 		while(string2.hasMoreTokens()){
 
@@ -187,7 +185,7 @@ class GaussJordan{
 		leeMatrix();
 
 	}
-
+	
 	public double geti1(){
 		return this.i1;
 	}

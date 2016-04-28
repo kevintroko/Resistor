@@ -25,7 +25,6 @@ public class PanelCircuitos extends JPanel implements ActionListener{
 	voltajeIMG;
 
 	private JButton resistencia, 
-	capacitor, 
 	conductor, 
 	voltaje;
 
