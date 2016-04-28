@@ -161,13 +161,13 @@ public class PanelMalla extends JPanel implements ActionListener{
 			if(e.getSource()==bComponente1||e.getSource()==bComponente2||e.getSource()==bComponente6){
 				if(this.componente=="resistencia"){
 					pc.setContadorR1();
-					System.out.println("num r1: "+pc.getContadorR1());
+					//System.out.println("num r1: "+pc.getContadorR1());
 					pc.agregaPanel();
 
 
 				}else if(this.componente=="voltaje"){
 					pc.setContadorV1();
-					System.out.println("num v1: "+pc.getContadorV1());
+					//System.out.println("num v1: "+pc.getContadorV1());
 					pc.agregaPanel();
 				}else if(this.componente=="conductor"){
 					pc.setContadorT();
@@ -180,14 +180,14 @@ public class PanelMalla extends JPanel implements ActionListener{
 
 			else if(e.getSource()==bComponente3||e.getSource()==bComponente4||e.getSource()==bComponente5){
 				if(this.componente=="resistencia"){
-					System.out.println(this.componente);
+					//System.out.println(this.componente);
 					pc.setContadorR2();
-					System.out.println("num r2: "+pc.getContadorR2());
+					//System.out.println("num r2: "+pc.getContadorR2());
 					pc.agregaPanel();
 
 				}else if(this.componente=="voltaje"){
 					pc.setContadorV2();
-					System.out.println("num v2: "+pc.getContadorV2());
+					//System.out.println("num v2: "+pc.getContadorV2());
 					pc.agregaPanel();
 
 				}else if(this.componente=="conductor"){
