@@ -27,9 +27,13 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	//Buttons
 	private JButton bResultado1;
+<<<<<<< HEAD
 	private boolean pinta;
 	private GaussJordan gauss = new GaussJordan();
 
+=======
+	
+>>>>>>> origin/master
 	//Resistances array and voltages
 	private Resistencia[] arrRes1=new Resistencia[3];
 	private Resistencia[] arrRes2=new Resistencia[3];
@@ -67,15 +71,18 @@ public class PanelControles extends JPanel implements ActionListener{
 	contadorV1,
 	contadorV2,
 	contadorT;
-
+	
+	GaussJordan gj;
+	
 	//Constructor
-	public PanelControles(PanelResultados pr) {
+	public PanelControles(PanelResultados pr, GaussJordan gj) {
 		super();
 		((FlowLayout)this.getLayout()).setAlignment(FlowLayout.CENTER);
 		this.setPreferredSize(new Dimension(200,720));
 		this.setBackground(new Color(225,225,225));	
 
 		//Instantiate components
+		this.gj=gj;
 		this.bResultado1= new JButton("Resultado");
 		this.panelRes=new Resistencia();
 		this.panelRes2=new Resistencia();
@@ -192,6 +199,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			this.obtenerI();
 		}
 	}
 
@@ -232,17 +240,31 @@ public class PanelControles extends JPanel implements ActionListener{
 	}
 
 	public void formula() throws IOException{
-		System.out.println(this.sumaResistencia1+"i1+"+resistenciaV+"i2="+this.sumaVoltaje1);
-		System.out.println(this.sumaResistencia2+"i1+"+resistenciaV+"i2="+this.sumaVoltaje2);
+		this.sumaResistencia1=this.sumaResistencia1*(-1);
+		this.sumaResistencia2=this.sumaResistencia2*(-1);
+		this.sumaVoltaje1=this.sumaVoltaje1*(-1);
+		this.sumaVoltaje2=this.sumaVoltaje2*(-1);
+		System.out.println(this.sumaResistencia1+"(i1)+"+resistenciaV+"(i2)="+this.sumaVoltaje1);
+		System.out.println(resistenciaV+"(i1)+"+this.sumaResistencia2+"(i2)= "+this.sumaVoltaje2);
 		PrintWriter pw=new PrintWriter(new FileWriter("in1."));
 		pw.print(2);
 		pw.print(" ");
 		pw.println(3);
 		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
-		pw.println(this.sumaResistencia2+" "+resistenciaV+" "+this.sumaVoltaje2);
+		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
+<<<<<<< HEAD
 		gauss.matrices(new FileReader("in1."), new FileWriter("outfile"));
 		this.pinta = true;
+=======
+		//
+		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
+	}
+	
+	public void obtenerI(){
+		System.out.println(gj.geti1());
+		System.out.println(gj.geti2());
+>>>>>>> origin/master
 	}
 	
 	public boolean yaPinta(){

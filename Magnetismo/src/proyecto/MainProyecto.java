@@ -25,10 +25,19 @@ public class MainProyecto extends JFrame{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setPreferredSize(new Dimension(1080, 720));
 
+		GaussJordan ecuacion = new GaussJordan();
+		
+		try {
+			ecuacion.matrices(new FileReader("in1."), new FileWriter("outfile"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 		PanelResultados pr = new PanelResultados();
 		this.add(pr, BorderLayout.EAST);
 
-		PanelControles pc = new PanelControles(pr);	
+		PanelControles pc = new PanelControles(pr, ecuacion);	
 		this.add(pc, BorderLayout.WEST);
 
 		PanelMalla pm = new PanelMalla(pc);
@@ -40,6 +49,7 @@ public class MainProyecto extends JFrame{
 		this.setLocation(50, 0);
 		this.pack();
 		this.setVisible(true);
+<<<<<<< HEAD
 
 		GaussJordan ecuación = new GaussJordan();
 
@@ -48,6 +58,9 @@ public class MainProyecto extends JFrame{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+=======
+		
+>>>>>>> origin/master
 	}
 
 
