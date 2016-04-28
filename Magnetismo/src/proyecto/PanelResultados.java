@@ -34,8 +34,6 @@ public class PanelResultados extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(ecuación.geti1());
-		System.out.println(ecuación.geti2());
 	}
 
 	public void paintComponent(Graphics g){
