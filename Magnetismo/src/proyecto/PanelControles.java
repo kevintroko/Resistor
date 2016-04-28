@@ -27,9 +27,10 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	//Buttons
 	private JButton bResultado1;
+
+	private GaussJordan gauss = new GaussJordan();
 	private PanelResultados pr = new PanelResultados();
 
-	
 	//Resistances array and voltages
 	private Resistencia[] arrRes1=new Resistencia[3];
 	private Resistencia[] arrRes2=new Resistencia[3];
@@ -39,7 +40,7 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	private JTextField tresInicial;
 	private JButton bPonerRes;
-	private int sumaVoltaje1,
+	private double sumaVoltaje1,
 	sumaResistencia1,
 	sumaVoltaje2,
 	sumaResistencia2,
@@ -62,14 +63,14 @@ public class PanelControles extends JPanel implements ActionListener{
 	voltaje6;
 
 	//Counter of possible resistances
-	private int contador1,
+	private double contador1,
 	contador2,
 	contadorV1,
 	contadorV2,
 	contadorT;
-	
+
 	GaussJordan gj;
-	
+
 	//Constructor
 	public PanelControles(PanelResultados pr, GaussJordan gj) {
 		super();
@@ -123,7 +124,7 @@ public class PanelControles extends JPanel implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==bPonerRes){
-					resistenciaV=Integer.parseInt(tresInicial.getText());
+					resistenciaV=Double.parseDouble(tresInicial.getText());
 				}		
 			}
 		});
@@ -222,23 +223,39 @@ public class PanelControles extends JPanel implements ActionListener{
 	}
 
 	//Getters
-	public int getContadorR1(){
+	public double getContadorR1(){
 		return this.contador1;
 	}
-	public int getContadorR2(){
+	public double getContadorR2(){
 		return this.contador2;
 	}
+<<<<<<< HEAD
 	public int getContadorV1(){
+=======
+
+	public double getContadorV1(){
+>>>>>>> origin/master
 		return this.contadorV1;
 	}
-	public int getContadorV2() {
+	public double getContadorV2() {
 		return this.contadorV2;
 	}
+<<<<<<< HEAD
 	public int getContadorTotal(){
 		return this.contadorT;
 	}
 	public JButton getBoton(){
 		return this.bResultado1;
+=======
+
+	public double getContadorTotal(){
+		return this.contadorT;
+	}
+
+	public JButton getBoton(){
+		return this.bResultado1;
+
+>>>>>>> origin/master
 	}
 
 	public void formula() throws IOException{
@@ -256,11 +273,21 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
 
+<<<<<<< HEAD
+=======
+
+		gauss.matrices(new FileReader("in1."), new FileWriter("outfile"));
+		//
+
+>>>>>>> origin/master
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
 	}
-	
+
 	public void obtenerI(){
 		System.out.println("i1: "+gj.geti1());
 		System.out.println("12:"+gj.geti2());
 	}
+
 }
+
+

@@ -21,7 +21,6 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class PanelCircuitos extends JPanel implements ActionListener{
 	private ImageIcon resistenciaIMG,
-	capacitorIMG,
 	conductorIMG,
 	voltajeIMG;
 
@@ -41,18 +40,12 @@ public class PanelCircuitos extends JPanel implements ActionListener{
 		//Receive a panel
 		this.pm=pm;
 		this.resistenciaIMG = new ImageIcon(getClass().getResource("resistencia.png"));
-		this.capacitorIMG = new ImageIcon(getClass().getResource("capacitor.png"));
 		this.conductorIMG =new ImageIcon(getClass().getResource("conductor.png"));
 		this.voltajeIMG = new ImageIcon(getClass().getResource("voltaje.png"));
-
 
 		Image img = resistenciaIMG.getImage() ;  
 		Image newimg = img.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
 		resistenciaIMG = new ImageIcon( newimg );
-
-		Image img2 = capacitorIMG.getImage() ;  
-		Image newimg2 = img2.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
-		capacitorIMG = new ImageIcon( newimg2 );
 
 		Image img3 = conductorIMG.getImage() ;  
 		Image newimg3 = img3.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
@@ -62,24 +55,19 @@ public class PanelCircuitos extends JPanel implements ActionListener{
 		Image newimg4 = img4.getScaledInstance( 150, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
 		voltajeIMG = new ImageIcon( newimg4 );
 
-
 		this.resistencia = new JButton(resistenciaIMG);
-		this.capacitor = new JButton(capacitorIMG);
 		this.conductor = new JButton(conductorIMG);
 		this.voltaje = new JButton(voltajeIMG);
 
-		this.resistencia.setBounds(50, 20,200,120);
-		this.capacitor.setBounds(300, 20,200,120);
-		this.conductor.setBounds(550, 20,200,120);
-		this.voltaje.setBounds(800, 20,200,120);
+		this.resistencia.setBounds(150, 20,200,120);
+		this.conductor.setBounds(425, 20,200,120);
+		this.voltaje.setBounds(700, 20,200,120);
 
 		this.add(this.resistencia);
-		this.add(this.capacitor);
 		this.add(this.conductor);
 		this.add(this.voltaje);
 
 		this.resistencia.addActionListener(this);
-		this.capacitor.addActionListener(this);
 		this.voltaje.addActionListener(this);
 		this.conductor.addActionListener(this);
 	}
@@ -88,9 +76,6 @@ public class PanelCircuitos extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.resistencia){
 			pm.cambiarComponente("resistencia");
-
-		}else if(e.getSource()==this.capacitor){
-			pm.cambiarComponente("capacitor");
 
 		}else if(e.getSource()==this.voltaje){
 			pm.cambiarComponente("voltaje");
