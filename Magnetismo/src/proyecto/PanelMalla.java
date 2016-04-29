@@ -217,30 +217,35 @@ public class PanelMalla extends JPanel implements ActionListener{
 			pr.setComponent("Componente1");
 			pr.setImagenAr(pr.getImage(), 0);
 			pr.repaint();
+			
 		}else if(e.getSource()==this.bComponente2){
 			pc.setNum(2);
 			this.checar(this.bComponente2);
 			pr.setComponent("Componente2");
 			pr.setImagenAr(pr.getImage(), 1);
 			pr.repaint();
+			
 		}else if(e.getSource()==this.bComponente3){
 			pc.setNum(3);
 			this.checar(this.bComponente3);
 			pr.setComponent("Componente3");
 			pr.setImagenAr(pr.getImage(), 2);
 			pr.repaint();
+			
 		}else if(e.getSource()==this.bComponente4){
 			pc.setNum(4);
 			this.checar(this.bComponente4);
 			pr.setComponent("Componente4");
 			pr.setImagenAr(pr.getImage(), 3);
 			pr.repaint();
+			
 		}else if(e.getSource()==this.bComponente5){
 			pc.setNum(5);
 			this.checar(this.bComponente5);
 			pr.setComponent("Componente5");
 			pr.setImagenAr(pr.getImage(), 4);
 			pr.repaint();
+			
 		}else if(e.getSource()==this.bComponente6){
 			pc.setNum(6);
 			this.checar(this.bComponente6);

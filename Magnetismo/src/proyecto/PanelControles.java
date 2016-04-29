@@ -55,7 +55,6 @@ public class PanelControles extends JPanel implements ActionListener{
 		//Instantiate components
 		this.gj=gj;
 		this.pr = pr;
-		this.pr= new PanelResultados();
 		this.bResultado1= new JButton("Resultado");
 		this.tresInicial=new JTextField(6);
 		this.bPonerRes=new JButton("Ok");
@@ -341,8 +340,6 @@ public class PanelControles extends JPanel implements ActionListener{
 		//Checks if the button pressed is the bResultado1
 		else if(e.getSource()==this.bResultado1){
 			//Paints the colored panelResultados
-			this.pr.setPaint(true);
-			this.pr.repaint();
 			//It gets all the components from the first net and sums them
 			this.sumaResistencia1=this.componente1+this.componente2+this.componente6;
 			this.sumaVoltaje1=this.componentev1+this.componentev2+this.componentev6;
@@ -381,7 +378,10 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
 		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
+		this.pr.setPaint(true);
+		this.pr.repaint();
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
+		//JOptionPane.showMessageDialog(null, "Hola");
 	}
 	
 	/**
@@ -396,7 +396,7 @@ public class PanelControles extends JPanel implements ActionListener{
 	/**
 	 * This function is a basic setter for the num variable in the panelMall
 	 * @param numero
-	 * The parameter numero is the one that defines the button that has been cliked in the panelMalla
+	 * The parameter numero is the one that defines the button that has been clicked in the panelMalla
 	 */
 	public void setNum(int numero){
 		this.num=numero;
@@ -404,7 +404,7 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	/**
 	 * Add array is in charge of adding the text fields containers into the containers of each component in order to sum them
-	 * it also diferentiates the voltages from the resistances.
+	 * it also differentiates the voltages from the resistances.
 	 * the component is surrounded by a try catch because in the moment they are created, there are no components in their text fields
 	 */
 	public void addArray(){
@@ -520,9 +520,9 @@ public class PanelControles extends JPanel implements ActionListener{
 	}
 
 	/**
-	 * Multiplica method gets the local i1 and i2 to get each cable value and multiplicate it if it is a resistor
+	 * Multiplica method gets the local i1 and i2 to get each cable value and multiply it if it is a resistor
 	 * if not, then it will just send the voltage value, the co1 values helps to see where it is a voltage 
-	 * and where is a resistance, true for resitance and false for voltage.
+	 * and where is a resistance, true for resistance and false for voltage.
 	 */
 	public void multiplicaI(){
 		double i1=gj.geti1();
@@ -552,6 +552,7 @@ public class PanelControles extends JPanel implements ActionListener{
 		if(this.co6){			
 			cable6=componente6*i1;
 		}else cable6=componente6;
+		
 		//this function is extended from the PanelResultados and it sends all the values to the panel
 		pr.setCables(cable1, cable2, cable3, cable4, cable5, cable6);
 	}

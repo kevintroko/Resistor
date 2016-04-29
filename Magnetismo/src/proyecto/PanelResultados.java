@@ -73,6 +73,8 @@ public class PanelResultados extends JPanel {
 	 * @param g
 	 */
 	public void paintComponent(Graphics g){
+		System.out.println("Hola paintComponent");
+
 		if (getIsPainted()) {
 			paintCircuit(g);
 		}
@@ -85,6 +87,7 @@ public class PanelResultados extends JPanel {
 	 * @param g
 	 */
 	public void paintCircuit(Graphics g) {
+		System.out.println("Hola paintcircuit");
 		int x = 160;
 		int y = 260;
 		
@@ -118,7 +121,6 @@ public class PanelResultados extends JPanel {
 		g.setColor(getColor(this.cable6));
 		g.drawLine(60, 300, 60, 220);
 		g.drawLine(60, 260, 160, 260);
-
 		g.drawLine(280, 260, 380, 260);
 		
 		g.drawImage(getImageAr(0).getImage(), 180, 30, 80, 60, null);
@@ -143,6 +145,7 @@ public class PanelResultados extends JPanel {
 	 * 					return true if the JButton in PanelControles was pressed	
 	 */
 	public boolean getIsPainted() {
+		System.out.println(this.isPainted);
 		return this.isPainted;
 	}
 	
