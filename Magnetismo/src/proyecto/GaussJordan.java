@@ -1,4 +1,14 @@
 package proyecto;
+
+/**
+ * Saved as GaussJordan.java
+ * @author Kevin Oswaldo Cabrera Navarro A01227157
+ * @author Mark Octavio Rivera Acosta A01630250
+ * 
+ * Started in April 6th, 2016
+ * Last modified in April 25th, 2016
+ */
+
 import java.io.*;
 import java.util.StringTokenizer;
 

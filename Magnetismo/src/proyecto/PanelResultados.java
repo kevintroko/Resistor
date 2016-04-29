@@ -2,7 +2,7 @@ package proyecto;
 /**
  * Saved as PanelResultados.java
  * @author Kevin Oswaldo Cabrera Navarro A01227157
- * @author Mark Octavio Rivera Acosta A01234567
+ * @author Mark Octavio Rivera Acosta A01630250
  * 
  * Started in April 6th, 2016
  * Last modified in April 28th, 2016
@@ -10,24 +10,26 @@ package proyecto;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-/**
- * @author Mark Octavio Rivera Acosta
- * @author Kevin Oswaldo Cabrera Navarro
- */
+
 
 @SuppressWarnings("serial")
 public class PanelResultados extends JPanel {
 
 	//Boolean to enable the paintComponent() in panelResultados
 	private boolean isPainted = false;
+	
 	private ImageIcon image;
+	
+	//ImageIcon Array: Saves the circuit images
 	private ImageIcon[] imagenes = new ImageIcon[6];
+	
+	//String: is a resistance, voltage or conductor
 	private String componente;
-
+	
+	//Double: Electrical current moving through the circuit sections
 	private double cable1,
 	cable2,
 	cable3,
@@ -35,6 +37,16 @@ public class PanelResultados extends JPanel {
 	cable5,
 	cable6;
 	
+	/**
+	 * Set the electrical current to specific sections in the circuit
+	 * 
+	 * @param a set the electrical current to the section a in the circuit
+	 * @param b set the electrical current to the section b in the circuit
+	 * @param c set the electrical current to the section c in the circuit
+	 * @param d set the electrical current to the section d in the circuit
+	 * @param e set the electrical current to the section e in the circuit
+	 * @param f set the electrical current to the section f in the circuit
+	 */
 	public void setCables(double a,double b,double c,double d,double e,double f){
 		this.cable1=a;
 		this.cable2=b;
@@ -108,37 +120,53 @@ public class PanelResultados extends JPanel {
 		g.drawLine(60, 260, 160, 260);
 
 		g.drawLine(280, 260, 380, 260);
-
+		
 		g.drawImage(getImageAr(0).getImage(), 180, 30, 80, 60, null);
-		g.drawImage(getImageAr(1).getImage(), 350, 150, 80, 60, null);
 		g.drawImage(getImageAr(2).getImage(), 350, 310, 80, 60, null);
 		g.drawImage(getImageAr(3).getImage(), 180, 430, 80, 60, null);
 		g.drawImage(getImageAr(4).getImage(), 25, 310, 80, 60, null);
 		g.drawImage(getImageAr(5).getImage(), 25, 150, 80, 60, null);
+		g.drawImage(getImageAr(1).getImage(), 350, 150, 80, 60, null);
 
 	}
 
 	/**
 	 * set isPainted to true if JButton BResultado is pressed in PanelControles
+	 * @param isPainted
 	 */
 	public void setPaint(boolean isPainted) {
 		this.isPainted = isPainted;
 	}
-	/**
-	 * 
-	 * @return isPainted
-	 * 					return true if the JButton in PanelControles was pressed
+	
+	/** 
+	 * @return isPainted 
+	 * 					return true if the JButton in PanelControles was pressed	
 	 */
 	public boolean getIsPainted() {
 		return this.isPainted;
 	}
-
+	
+	/**
+	 * set an imageIcon to image which will be painted in the circuit
+	 * @param image 
+	 */
 	public void setImage(ImageIcon image){
 		this.image = image;
 	}
+	
+	/**
+	 * 
+	 * @return image
+	 * 				return the image that will be painted in the circuit
+	 */
 	public ImageIcon getImage(){
 		return this.image;
 	}
+	
+	/**
+	 * Set the kind of component that will be painted in the circuit: resistance, conductor or voltage
+	 * @param componente
+	 */
 	public void setComponent(String componente){
 		this.componente = componente;
 	}
@@ -155,7 +183,7 @@ public class PanelResultados extends JPanel {
 	}
 
 	/**
-	 * Compare the size of a current in a circuit section
+	 * Creates an electrical current range 
 	 * @param corriente
 	 * @return color 
 	 * 				this color is assigned to the corresponding circuit section 
@@ -164,10 +192,18 @@ public class PanelResultados extends JPanel {
 
 		Color color = Color.black;
 
-		if (corriente < 60) {
+		if (corriente <= 20) {
 			color = Color.GREEN;
-		}else if (corriente > 60 & corriente < 100) {
-			color = Color.ORANGE;
+			
+		}else if (corriente > 20 & corriente <= 80) {
+			color = new Color(0,100,0);
+		
+		}else if (corriente > 80 & corriente <= 120) {
+			color = new Color(255,255,50);
+		
+		}else if (corriente > 120 & corriente <= 200) {
+			color = new Color(255,128,0);
+		
 		}else{
 			color = Color.RED;
 		}
