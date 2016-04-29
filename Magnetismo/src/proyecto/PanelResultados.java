@@ -87,7 +87,6 @@ public class PanelResultados extends JPanel {
 	 * @param g
 	 */
 	public void paintCircuit(Graphics g) {
-		System.out.println("Hola paintcircuit");
 		int x = 160;
 		int y = 260;
 		
@@ -145,7 +144,6 @@ public class PanelResultados extends JPanel {
 	 * 					return true if the JButton in PanelControles was pressed	
 	 */
 	public boolean getIsPainted() {
-		System.out.println(this.isPainted);
 		return this.isPainted;
 	}
 	
