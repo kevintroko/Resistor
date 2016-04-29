@@ -5,7 +5,7 @@ package proyecto;
  * @author Mark Octavio Rivera Acosta A01630250
  * 
  * Started in April 6th, 2016
- * Last modified in April 25th, 2016
+ * Last modified in April 28th, 2016
  */
 
 import java.awt.Color;

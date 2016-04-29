@@ -32,9 +32,9 @@ public class PanelControles extends JPanel implements ActionListener{
 	//Every swing and component of the class is declared outside the constructor
 	private PanelResultados pr;
 	private GaussJordan gj;
-	private String componente;
 	private JTextField tresInicial;
 	private JButton bResultado1,bPonerRes;
+	private String componente,formula1,formula2;
 	private JButton bOk1,bOk2,bOk3,bOk4,bOk5,bOk6;
 	private JTextField tfComponente1,tfComponente2,tfComponente3,tfComponente4,tfComponente5,tfComponente6;
 	private JLabel lComponente1,lComponente2,lComponente3,lComponente4,lComponente5,lComponente6;
@@ -355,9 +355,20 @@ public class PanelControles extends JPanel implements ActionListener{
 				e1.printStackTrace();
 			}
 			this.multiplicaI();
+			this.pantalla();
 		}
 	}
 	
+	/**
+	 * Method in charge to put an option pane with all the formulas it prints:
+	 * Formula. I1, I2 y Rango
+	 */
+	private void pantalla() {
+		// TODO Auto-generated method stub
+		Formulas frame2 = new Formulas(this);
+		frame2.setVisible(true);
+	}
+
 	/**
 	 * This method is in charge for the making of the two formulas that the circuit does
 	 * in the other hand, it also writes in a in. archive the needed matrix for the Gauss Jordan operations
@@ -381,7 +392,8 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.pr.setPaint(true);
 		this.pr.repaint();
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
-		//JOptionPane.showMessageDialog(null, "Hola");
+		this.formula1=this.sumaResistencia1+"(i1)+"+resistenciaV+"(i2)="+this.sumaVoltaje1;
+		this.formula2=resistenciaV+"(i1)"+this.sumaResistencia2+"(i2)= "+this.sumaVoltaje2;
 	}
 	
 	/**
@@ -556,4 +568,20 @@ public class PanelControles extends JPanel implements ActionListener{
 		//this function is extended from the PanelResultados and it sends all the values to the panel
 		pr.setCables(cable1, cable2, cable3, cable4, cable5, cable6);
 	}
+	
+	public String getFormula1(){
+		return this.formula1;
+	}
+	public String getFormula2(){
+		return this.formula2;
+	}
+	
+	public double geti1(){
+		return gj.geti1();
+	}
+	
+	public double geti2(){
+		return gj.geti2();
+	}
+	
 }
