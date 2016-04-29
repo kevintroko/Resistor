@@ -16,9 +16,15 @@ class GaussJordan{
 
 	private double i1, i2;
 
-	// swap()
-	// swap row i with row k
-	// pre: A[i][q]==A[k][q]==0 for 1<=q<j
+	/**
+	 * swap()
+	 * swap row i with row k
+	 * pre: A[i][q]==A[k][q]==0 for 1<=q<j
+	 * @param a 
+	 * @param i
+	 * @param k
+	 * @param j
+	 */
 	static void swap(double[][] a, int i, int k, int j){
 		int m = a[0].length - 1;
 		double temp;
@@ -29,20 +35,30 @@ class GaussJordan{
 		}
 	}
 
-	// divide()
-	// divide row i by A[i][j]
-	// pre: A[i][j]!=0, A[i][q]==0 for 1<=q<j
-	// post: A[i][j]==1;
+	/**
+	 * divide()
+	 * divide row i by A[i][j]
+	 * pre: A[i][j]!=0, A[i][q]==0 for 1<=q<j
+	 * post: A[i][j]==1;
+	 * @param a
+	 * @param i
+	 * @param j
+	 */
 	static void divide(double[][] a, int i, int j){
 		int m = a[0].length - 1;
 		for(int q=j+1; q<=m; q++) a[i][q] /= a[i][j];
 		a[i][j] = 1;
 	}
 
-	// eliminate()
-	// subtract an appropriate multiple of row i from every other row
-	// pre: A[i][j]==1, A[i][q]==0 for 1<=q<j
-	// post: A[p][j]==0 for p!=i
+	/**
+	 * eliminate()
+	 * subtract an appropriate multiple of row i from every other row
+	 * pre: A[i][j]==1, A[i][q]==0 for 1<=q<j
+	 * post: A[p][j]==0 for p!=i
+	 * @param a
+	 * @param i
+	 * @param j
+	 */
 	static void eliminate(double[][] a, int i, int j){
 		int n = a.length - 1;
 		int m = a[0].length - 1;
@@ -56,8 +72,12 @@ class GaussJordan{
 		}
 	}
 
-	// printMatrix()
-	// print the present state of Matrix A to file out
+	/**
+	 * printMatrix()
+	 * print the present state of Matrix A to file out
+	 * @param out receive the file where the matrix will be written on
+	 * @param a receives the present state of the matrix
+	 */
 	static void printMatrix(PrintWriter out, double[][] a){
 		int n = a.length - 1;
 		int m = a[0].length - 1;
@@ -68,8 +88,12 @@ class GaussJordan{
 		out.println();
 		out.println();
 	}
-	//read the matrix
-	//get the value for the electrical currents
+	
+	/**
+	 * read the matrix
+	 * get the value for the electrical currents
+	 * @throws IOException
+	 */
 	public void leeMatrix() throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("outfile"));
 		String valor_i1, valor_i2;
@@ -113,9 +137,14 @@ class GaussJordan{
 
 	}
 
-	// main()
-	// read input file, initialize matrix, perform Gauss-Jordan Elimination,
-	// and write resulting matrices to output file
+	/**
+	 * matrices()
+	 * read input file, initialize matrix, perform Gauss-Jordan Elimination,
+	 * and write resulting matrices to output file
+	 * @param fileReader read the matrix
+	 * @param fileWriter write the solution of the matrix by Gauss-Jordan
+	 * @throws IOException
+	 */
 	public void matrices(FileReader fileReader, FileWriter fileWriter) throws IOException{
 		int n, m, i, j, k;
 		String line;
@@ -190,15 +219,18 @@ class GaussJordan{
 		out.close();
 		leeMatrix();
 	}
-	
+	/**
+	 * Return the value of the first electrical current  
+	 * @return i1
+	 */
 	public double geti1(){
-		System.out.println("valor i1 es:"+this.i1);
-
 		return this.i1;
 	}
+	/**
+	 * Return the value of the second electrical current  
+	 * @return i2
+	 */
 	public double geti2(){
-		System.out.println("valor i2 es: "+this.i2);
-
 		return this.i2;
 	}
 }
