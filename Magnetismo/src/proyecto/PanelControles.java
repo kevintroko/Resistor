@@ -371,7 +371,7 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.sumaVoltaje2=this.sumaVoltaje2*(-1);
 		System.out.println(this.sumaResistencia1+"(i1)+"+resistenciaV+"(i2)="+this.sumaVoltaje1);
 		System.out.println(resistenciaV+"(i1)"+this.sumaResistencia2+"(i2)= "+this.sumaVoltaje2);
-		PrintWriter pw=new PrintWriter(new FileWriter("in1."));
+		PrintWriter pw = new PrintWriter(new FileWriter("in1."));
 		pw.print(2);
 		pw.print(" ");
 		pw.println(3);
@@ -411,7 +411,7 @@ public class PanelControles extends JPanel implements ActionListener{
 		if(this.componente=="resistencia"){
 			if(this.num==1){
 				//if co1 is true then co1 is a resistance
-				this.co1=true;
+				//this.co1=true;
 				try {
 					this.componente1=Double.parseDouble(this.tfComponente1.getText());					
 				} catch (Exception e) {
@@ -468,7 +468,6 @@ public class PanelControles extends JPanel implements ActionListener{
 			if(this.num==1){
 				this.co1=false;
 				try {
-					System.out.println("soy un voltaje 2");
 					this.componentev1=Double.parseDouble(this.tfComponente1.getText());
 					System.out.println(this.componentev1);
 				} catch (Exception e) {

@@ -73,8 +73,6 @@ public class PanelResultados extends JPanel {
 	 * @param g
 	 */
 	public void paintComponent(Graphics g){
-		System.out.println("Hola paintComponent");
-
 		if (getIsPainted()) {
 			paintCircuit(g);
 		}
