@@ -5,7 +5,7 @@ package proyecto;
  * @author Mark Octavio Rivera Acosta A01630250
  * 
  * Started in April 6th, 2016
- * Last modified in April 26th, 2016
+ * Last modified in April 28th, 2016
  */
 
 import java.awt.Color;
@@ -29,68 +29,22 @@ import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class PanelControles extends JPanel implements ActionListener{
-
-	//Buttons
-	private JButton bResultado1;
-
-	private PanelResultados pr = new PanelResultados();
-
-	private JTextField tresInicial;
-	private JButton bPonerRes;
-	private double sumaVoltaje1,
-	sumaResistencia1,
-	sumaVoltaje2,
-	sumaResistencia2,
-	resistenciaV;
-
+	//Every swing and component of the class is declared outside the constructor
+	private PanelResultados pr;
+	private GaussJordan gj;
 	private String componente;
+	private JTextField tresInicial;
+	private JButton bResultado1,bPonerRes;
+	private JButton bOk1,bOk2,bOk3,bOk4,bOk5,bOk6;
+	private JTextField tfComponente1,tfComponente2,tfComponente3,tfComponente4,tfComponente5,tfComponente6;
+	private JLabel lComponente1,lComponente2,lComponente3,lComponente4,lComponente5,lComponente6;
 
+	//Declaration of global variables and needed components for the PanelControles Class
+	private double componentev1,componentev2,componentev3,componentev4,componentev5,componentev6;
+	private double sumaVoltaje1,sumaResistencia1,sumaVoltaje2,sumaResistencia2,resistenciaV;
+	private double componente1,componente2,componente3,componente4,componente5,componente6;
+	private boolean co1,co2,co3,co4,co5,co6;
 	private int num;
-
-	GaussJordan gj;
-
-	private JLabel lComponente1, 
-	lComponente2,
-	lComponente3,
-	lComponente4,
-	lComponente5, 
-	lComponente6;
-
-
-	private double componente1,
-	componente2,
-	componente3,
-	componente4,
-	componente5,
-	componente6,
-	componentev1,
-	componentev2,
-	componentev3,
-	componentev4,
-	componentev5,
-	componentev6;
-
-	private boolean co1,
-					co2,
-					co3,
-					co4,
-					co5,
-					co6;
-					
-
-	private JTextField tfComponente1,
-	tfComponente2,
-	tfComponente3,
-	tfComponente4,
-	tfComponente5,
-	tfComponente6;
-
-	private JButton bOk1,
-	bOk2,
-	bOk3,
-	bOk4,
-	bOk5,
-	bOk6;
 
 	//Constructor
 	public PanelControles(PanelResultados pr, GaussJordan gj) {
@@ -101,13 +55,15 @@ public class PanelControles extends JPanel implements ActionListener{
 		//Instantiate components
 		this.gj=gj;
 		this.pr = pr;
+		this.pr= new PanelResultados();
 		this.bResultado1= new JButton("Resultado");
-		bResultado1.setForeground(Color.DARK_GRAY);
-
 		this.tresInicial=new JTextField(6);
-		tresInicial.setForeground(Color.DARK_GRAY);
 		this.bPonerRes=new JButton("Ok");
+
+		//Color background changed to dark_gray
+		bResultado1.setForeground(Color.DARK_GRAY);
 		bPonerRes.setForeground(Color.DARK_GRAY);
+		tresInicial.setForeground(Color.DARK_GRAY);
 
 		//Adds Listeners
 		this.bResultado1.addActionListener(this);
@@ -160,7 +116,7 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.bOk6 = new JButton("ok");
 		this.bOk6.addActionListener(this);
 
-		//Resistencia
+		//Resistance
 		JLabel lblNewLabel_1 = new JLabel("Resistencia");
 		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 		this.bPonerRes.addActionListener(new ActionListener(){
@@ -171,6 +127,7 @@ public class PanelControles extends JPanel implements ActionListener{
 			}
 		});
 
+		//This method were created by a Java Windows Builder in order to have a nice group layout for the component
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
@@ -278,15 +235,19 @@ public class PanelControles extends JPanel implements ActionListener{
 		setLayout(groupLayout);
 	}
 
-
-	//Actions of the buttons
+	/**
+	 * This is where all the actions that are performed by the buttons are described
+	 * the buttons inside this method are: 
+	 * each 'ok' button for textLabels in the PanelControles, also, the 'resultado' button
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==bOk1){
+			//if component is not null then get the number inside the tfComponente1
 			if(this.componente!=null){				
 				componente1= Double.parseDouble(tfComponente1.getText());
 			}
-			//checks its positive
+			//checks if the number its positive, if not then it alerts the user with a message dialog.
 			if(componente1<0){
 				if(componente=="resistencia"){
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER RESISTENCIAS NEGATIVAS");
@@ -294,16 +255,14 @@ public class PanelControles extends JPanel implements ActionListener{
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER VOLTAJES NEGATIVOS");
 				}
 			}
-
-			//prints value (Only for testing)
-			System.out.println("El valor 1 es: "+componente1);
+			//when the program checks its not null, and it's not negative. then it call the addArray method
 			this.addArray();
-		}
-		else if(e.getSource()==bOk2){
+		}else if(e.getSource()==bOk2){
+			//if component is not null then get the number inside the tfComponente2
 			if(this.componente!=null){
 				componente2= Double.parseDouble(tfComponente2.getText());
 			}
-			//checks its positive
+			//checks if the number its positive, if not then it alerts the user with a message dialog.
 			if(componente2<0){
 				if(componente=="resistencia"){
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER RESISTENCIAS NEGATIVAS");
@@ -311,16 +270,14 @@ public class PanelControles extends JPanel implements ActionListener{
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER VOLTAJES NEGATIVOS");
 				}
 			}
-
-			//prints value (Only for testing)
-			System.out.println("El valor 2 es: "+componente2);
+			//when the program checks its not null, and it's not negative. then it call the addArray method
 			this.addArray();
-
 		}else if(e.getSource()==this.bOk3){
 			if(this.componente!=null){
+				//if component is not null then get the number inside the tfComponente3
 				componente3= Double.parseDouble(tfComponente3.getText());
 			}
-			//checks its positive
+			//checks if the number its positive, if not then it alerts the user with a message dialog.
 			if(componente3<0){
 				if(componente=="resistencia"){
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER RESISTENCIAS NEGATIVAS");
@@ -328,16 +285,15 @@ public class PanelControles extends JPanel implements ActionListener{
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER VOLTAJES NEGATIVOS");
 				}
 			}
-
-			//prints value (Only for testing)
-			System.out.println("El valor 3 es: "+componente3);
+			//when the program checks its not null, and it's not negative. then it call the addArray method
 			this.addArray();
 
-		}else if(e.getSource()==this.bOk4){			
+		}else if(e.getSource()==this.bOk4){		
+			//if component is not null then get the number inside the tfComponente4
 			if(this.componente!=null){
 				componente4= Double.parseDouble(tfComponente4.getText());
 			}
-			//checks its positive
+			//checks if the number its positive, if not then it alerts the user with a message dialog.
 			if(componente4<0){
 				if(componente=="resistencia"){
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER RESISTENCIAS NEGATIVAS");
@@ -345,16 +301,15 @@ public class PanelControles extends JPanel implements ActionListener{
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER VOLTAJES NEGATIVOS");
 				}
 			}
-
-			//prints value (Only for testing)
-			System.out.println("El valor 4 es: "+componente4);
+			//when the program checks its not null, and it's not negative. then it call the addArray method
 			this.addArray();
 
 		}else if(e.getSource()==this.bOk5){
+			//if component is not null then get the number inside the tfComponente5
 			if(this.componente!=null){
 				componente5= Double.parseDouble(tfComponente5.getText());
 			}
-			//checks its positive
+			//checks if the number its positive, if not then it alerts the user with a message dialog.
 			if(componente5<0){
 				if(componente=="resistencia"){
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER RESISTENCIAS NEGATIVAS");
@@ -362,16 +317,15 @@ public class PanelControles extends JPanel implements ActionListener{
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER VOLTAJES NEGATIVOS");
 				}
 			}
-
-			//prints value (Only for testing)
-			System.out.println("El valor 5 es: "+componente5);
+			//when the program checks its not null, and it's not negative. then it call the addArray method
 			this.addArray();
 
 		}else if(e.getSource()==this.bOk6){
+			//if component is not null then get the number inside the tfComponente6
 			if(this.componente!=null){
 				this.componente6= Double.parseDouble(tfComponente6.getText());
 			}
-			//checks its positive
+			//checks if the number its positive, if not then it alerts the user with a message dialog.
 			if(componente6<0){
 				if(componente=="resistencia"){
 					JOptionPane.showMessageDialog(null, "NO PUEDEN SER RESISTENCIAS NEGATIVAS");
@@ -381,48 +335,22 @@ public class PanelControles extends JPanel implements ActionListener{
 				tfComponente6.setText("0");
 				componente6=0;
 			}
-
-			//prints value (Only for testing)
-			System.out.println("El valor 6 es: "+this.componente6);
+			//when the program checks its not null, and it's not negative. then it call the addArray method
 			this.addArray();
 		}
-
-
+		//Checks if the button pressed is the bResultado1
 		else if(e.getSource()==this.bResultado1){
+			//Paints the colored panelResultados
 			this.pr.setPaint(true);
 			this.pr.repaint();
-			
-			System.out.println(this.componente1);
-			System.out.println(this.componente2);
-			System.out.println(this.componente3);
-			System.out.println(this.componente4);
-			System.out.println(this.componente5);
-			System.out.println(this.componente6);
-			
-			System.out.println(this.componentev1);
-			System.out.println(this.componentev2);
-			System.out.println(this.componentev3);
-			System.out.println(this.componentev4);
-			System.out.println(this.componentev5);
-			System.out.println(this.componentev6);
-			
-			
+			//It gets all the components from the first net and sums them
 			this.sumaResistencia1=this.componente1+this.componente2+this.componente6;
-
 			this.sumaVoltaje1=this.componentev1+this.componentev2+this.componentev6;
-
+			//It gets all the components from the second net and sums them
 			this.sumaResistencia2=this.componente4+this.componente5+this.componente3;
-
 			this.sumaVoltaje2=this.componentev4+this.componentev5+this.componentev3;
-
-			System.out.println("suma Resistencia 1: "+this.sumaResistencia1);
-			System.out.println("suma Resistencia 2: "+this.sumaResistencia2);
-			System.out.println("suma voltaje 1: "+this.sumaVoltaje1);
-			System.out.println("suma voltaje 2: "+this.sumaVoltaje2);
 			
-			System.out.println(gj.geti1());
-			System.out.println(gj.geti2());
-
+			//Catches the IOExceptio
 			try {
 				this.formula();
 			} catch (IOException e1) {
@@ -432,7 +360,13 @@ public class PanelControles extends JPanel implements ActionListener{
 			this.multiplicaI();
 		}
 	}
-
+	
+	/**
+	 * This method is in charge for the making of the two formulas that the circuit does
+	 * in the other hand, it also writes in a in. archive the needed matrix for the Gauss Jordan operations
+	 * and being able to get the i1 and i2 from the functions
+	 * @throws IOException
+	 */
 	public void formula() throws IOException{
 		this.sumaResistencia1=this.sumaResistencia1*(-1);
 		this.sumaResistencia2=this.sumaResistencia2*(-1);
@@ -447,21 +381,36 @@ public class PanelControles extends JPanel implements ActionListener{
 		pw.println(this.sumaResistencia1+" "+resistenciaV+" "+this.sumaVoltaje1);
 		pw.println(resistenciaV+" "+this.sumaResistencia2+" "+this.sumaVoltaje2);
 		pw.close();	
-
 		gj.matrices(new FileReader("in1."), new FileWriter("outfile"));
 	}
-
+	
+	/**
+	 * Getter of the function to get which component is chosen 
+	 * and been able to have difference between resistances and voltages
+	 * @param componente
+	 */
 	public void setComponente(String componente){
 		this.componente=componente;
 	}
 
+	/**
+	 * This function is a basic setter for the num variable in the panelMall
+	 * @param numero
+	 * The parameter numero is the one that defines the button that has been cliked in the panelMalla
+	 */
 	public void setNum(int numero){
 		this.num=numero;
 	}
 
+	/**
+	 * Add array is in charge of adding the text fields containers into the containers of each component in order to sum them
+	 * it also diferentiates the voltages from the resistances.
+	 * the component is surrounded by a try catch because in the moment they are created, there are no components in their text fields
+	 */
 	public void addArray(){
 		if(this.componente=="resistencia"){
 			if(this.num==1){
+				//if co1 is true then co1 is a resistance
 				this.co1=true;
 				try {
 					this.componente1=Double.parseDouble(this.tfComponente1.getText());					
@@ -470,6 +419,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente1.setText("Resistencia 1");
 			}else if(this.num==2){
+				//if co2 is true then co2 is a resistance
 				this.co2=true;
 				try {
 					this.componente2=Double.parseDouble(this.tfComponente2.getText());					
@@ -478,6 +428,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente2.setText("Resistencia 2");
 			}else if(this.num==3){
+				//if co3 is true then co3 is a resistance
 				this.co3=true;
 				try {
 					this.componente3=Double.parseDouble(this.tfComponente3.getText());					
@@ -486,6 +437,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente3.setText("Resistencia 3");
 			}else if(this.num==4){
+				//if co4 is true then co4 is a resistance
 				this.co4=true;
 				try {
 					this.componente4=Double.parseDouble(this.tfComponente4.getText());					
@@ -494,6 +446,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente4.setText("Resistencia 4");
 			}else if(this.num==5){
+				//if co5 is true then co5 is a resistance
 				this.co5=true;
 				try {
 					this.componente5=Double.parseDouble(this.tfComponente5.getText());					
@@ -502,6 +455,7 @@ public class PanelControles extends JPanel implements ActionListener{
 				}
 				this.lComponente5.setText("Resistencia 5");
 			}else if(this.num==6){
+				//if co6 is true then co6 is a resistance
 				this.co6=true;
 				try {
 					this.componente6=Double.parseDouble(this.tfComponente6.getText());					
@@ -564,36 +518,41 @@ public class PanelControles extends JPanel implements ActionListener{
 			}
 		}
 	}
-	
+
+	/**
+	 * Multiplica method gets the local i1 and i2 to get each cable value and multiplicate it if it is a resistor
+	 * if not, then it will just send the voltage value, the co1 values helps to see where it is a voltage 
+	 * and where is a resistance, true for resitance and false for voltage.
+	 */
 	public void multiplicaI(){
 		double i1=gj.geti1();
 		double i2=gj.geti2();
 		double cable1,cable2,cable3,cable4,cable5,cable6;
-		
+		//if true then multiply component for the respective i and save it in the cable variable
 		if(this.co1){
 			cable1=componente1*i1;			
 		}else cable1=componente1;
-		
+
 		if(this.co2){			
 			cable2=componente2*i1;
 		}else cable2=componente2;
-		
+
 		if(this.co3){			
 			cable3=componente3*i2;
 		}else cable3=componente3;
-		
+
 		if(this.co4){			
 			cable4=componente4*i2;
 		}else cable4=componente4;
-		
+
 		if(this.co5){			
 			cable5=componente5*i2;
 		}else cable5=componente5;
-		
+
 		if(this.co6){			
 			cable6=componente6*i1;
 		}else cable6=componente6;
-		
+		//this function is extended from the PanelResultados and it sends all the values to the panel
 		pr.setCables(cable1, cable2, cable3, cable4, cable5, cable6);
 	}
 }
