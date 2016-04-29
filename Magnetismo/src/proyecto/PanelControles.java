@@ -46,7 +46,11 @@ public class PanelControles extends JPanel implements ActionListener{
 	private boolean co1,co2,co3,co4,co5,co6;
 	private int num;
 
-	//Constructor
+	/**
+	 * The main constructor of PanelControles
+	 * @param pr receives the PanelResultados
+	 * @param gj Receives a Gauss Jordan 
+	 */
 	public PanelControles(PanelResultados pr, GaussJordan gj) {
 		super();
 		this.setPreferredSize(new Dimension(200, 541));
@@ -567,18 +571,32 @@ public class PanelControles extends JPanel implements ActionListener{
 		//this function is extended from the PanelResultados and it sends all the values to the panel
 		pr.setCables(cable1, cable2, cable3, cable4, cable5, cable6);
 	}
-	
+	/**
+	 * Get the first equation in the matrix
+	 * @return formula1
+	 */
 	public String getFormula1(){
 		return this.formula1;
 	}
+	
+	/**
+	 * Get the second equation in the matrix
+	 * @return formula2
+	 */
 	public String getFormula2(){
 		return this.formula2;
 	}
-	
+	/**
+	 * Get the value of the first electrical current in the circuit
+	 * @return g1
+	 */
 	public double geti1(){
 		return gj.geti1();
 	}
-	
+	/**
+	 * Get the value of the second electrical current in the circuit
+	 * @return g2
+	 */
 	public double geti2(){
 		return gj.geti2();
 	}
