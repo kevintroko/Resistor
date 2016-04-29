@@ -21,17 +21,19 @@ public class MainProyecto extends JFrame{
 	private static final long serialVersionUID = 1L;
 	public MainProyecto(){
 		super("Circuitos");
+		//If the window is closed the the program is ended
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//Sets the initial size of the frame
 		this.setPreferredSize(new Dimension(1080, 720));
 
 		GaussJordan ecuacion = new GaussJordan();
-
 		try {
 			ecuacion.matrices(new FileReader("in1."), new FileWriter("outfile"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+		//Instantiate each panel and add them into the Frame
 		PanelResultados pr = new PanelResultados();
 		this.add(pr, BorderLayout.EAST);
 
@@ -54,9 +56,12 @@ public class MainProyecto extends JFrame{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
-
+	
+	/**
+	 * Main program of the whole project
+	 * @param args
+	 */
 	public static void main(String[] args){
 		@SuppressWarnings("unused")
 		MainProyecto frame = new MainProyecto();
