@@ -18,8 +18,15 @@ import javax.swing.JFrame;
  */
 
 public class MainProyecto extends JFrame{
+	
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Constructor of class MainProyecto
+	 * Creates a JFrame where all the JPannel in the different classes are stored
+	 */
 	public MainProyecto(){
+		
 		super("Circuitos");
 		//If the window is closed the the program is ended
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

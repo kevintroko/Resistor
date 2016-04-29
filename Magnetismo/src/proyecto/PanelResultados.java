@@ -163,20 +163,32 @@ public class PanelResultados extends JPanel {
 	}
 	
 	/**
-	 * Set the kind of component that will be painted in the circuit: resistance, conductor or voltage
+	 * Set the kind of component that will be painted in the circuit: resistance, cable or voltage
 	 * @param componente
 	 */
 	public void setComponent(String componente){
 		this.componente = componente;
 	}
+	/**
+	 * Returns the kind of component that will be painted in the circuit: resistance, cable or voltage
+	 * @return componente
+	 */
 	public String getComponent(){
 		return this.componente;
 	}
-
+	/**
+	 * Store the images from PanelMalla into an array
+	 * @param image: the image that will be stored in the imagenes Array
+	 * @param i: The position of the image in the array
+	 */
 	public void setImagenAr(ImageIcon image, int i){
 		this.imagenes[i] = image;
 	}
-
+	/**
+	 * Get the needed image stored in an specific position in the array imagenes 
+	 * @param i: the position of the neccesary image inside the array
+	 * @return this.imagenes[i]
+	 */
 	public ImageIcon getImageAr(int i){
 		return this.imagenes[i];
 	}

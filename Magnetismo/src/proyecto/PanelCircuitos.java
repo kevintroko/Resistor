@@ -91,8 +91,6 @@ public class PanelCircuitos extends JPanel implements ActionListener{
 		this.voltaje.addActionListener(this);
 		this.conductor.addActionListener(this);
 	}
-
-	@Override
 	/**
 	 * SetImage in PanelReslutado
 	 * SetComponent to PanelMalla
