@@ -167,3 +167,4 @@ public class Formulas extends JFrame{
 		getContentPane().setLayout(groupLayout);
 	}
 }
+}
